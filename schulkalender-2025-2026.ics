@@ -37,8 +37,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:exakt-lokal-001@example.com
 DTSTAMP:20260331T081530Z
-DTSTART;TZID=Europe/Berlin:20260403T09{MM}30
-DTEND;TZID=Europe/Berlin:20260403T10{MM}00
+DTSTART;TZID=Europe/Berlin:20260403T090530
+DTEND;TZID=Europe/Berlin:20260403T103000
 SUMMARY:Teamsitzung (Minutengenau)
 LOCATION:Lehrerzimmer A
 DESCRIPTION:Teste hier die Anzeige mit „krummen“ Minuten.
@@ -85,8 +85,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:exakt-lokal-004-sekunden@example.com
 DTSTAMP:20260331T081530Z
-DTSTART;TZID=Europe/Berlin:20260407T08{07}05
-DTEND;TZID=Europe/Berlin:20260407T09{57}05
+DTSTART;TZID=Europe/Berlin:20260407T080705
+DTEND;TZID=Europe/Berlin:20260407T095705
 SUMMARY:Unterrichtsbesuch (Sekundenfrei, aber krumme Minuten)
 LOCATION:Raum 105
 DESCRIPTION:Prüfe Minutendarstellung ohne Sekunden.
