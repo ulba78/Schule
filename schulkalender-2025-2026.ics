@@ -45,13 +45,13 @@ DESCRIPTION:Teste hier die Anzeige mit „krummen“ Minuten.
 END:VEVENT
 
 BEGIN:VEVENT
-UID:exakt-lokal-001c@example.com
+UID:clean-utc-001@example.com
 DTSTAMP:20260331T081530Z
-DTSTART;TZID=Europe/Berlin:20260403T0905
-DTEND;TZID=Europe/Berlin:20260403T1030
-SUMMARY:[TZID HHMM] Teamsitzung (09:05–10:30)
+DTSTART:20260403T070500Z
+DTEND:20260403T083000Z
+SUMMARY:Teamsitzung
 LOCATION:Lehrerzimmer A
-DESCRIPTION:Nur Stunden+Minuten.
+DESCRIPTION:Teste Anzeige ohne doppelte Uhrzeit/TZ.
 END:VEVENT
 
 BEGIN:VEVENT
