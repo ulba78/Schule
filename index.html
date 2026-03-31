@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Schulkalender</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;line-height:1.5;margin:0;padding:16px;background:#f7f7f8;color:#111}
+    .header{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .controls{display:flex;gap:8px;flex-wrap:wrap}
+    button{background:#fff;border:1px solid #ddd;padding:6px 10px;border-radius:6px;cursor:pointer}
+    button.active{background:#0b76ff;color:#fff;border-color:#0b76ff}
+    #agenda{background:#fff;border:1px solid #e6e6e9;border-radius:8px;padding:12px}
+    .item{padding:10px;border-bottom:1px solid #f0f0f2;display:flex;justify-content:space-between;gap:12px}
+    .item:last-child{border-bottom:0}
+    .time{color:#333;font-weight:600;min-width:160px}
+    .title{flex:1}
+    .meta{color:#666;font-size:0.9em}
+    .empty{padding:24px;text-align:center;color:#666}
+    .notice{font-size:0.9em;color:#555;margin-bottom:8px}
+    .small{font-size:0.85em;color:#666}
+    .month{margin:24px 0 8px;border-bottom:2px solid #e5e7eb;padding-bottom:4px;font-weight:700}
+    .actions{display:flex;gap:8px;align-items:center}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h3 style="margin:0 0 6px 0">Schulkalender</h3>
+      <div class="notice" id="sourceNotice">lade …</div>
+    </div>
+    <div class="controls">
+      <button id="upcomingBtn" class="active" aria-pressed="true">Anstehend</button>
+      <button id="top3Btn" aria-pressed="false">Top 3</button>
+      <button id="allBtn" aria-pressed="false">Alle</button>
+      <div class="actions">
+        <button id="refreshBtn" title="Neu laden">↻</button>
+        <button id="clearCacheBtn" title="Cache löschen">🗑️</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="agenda"><div class="empty">Warte auf Termine…</div></div>
+
+<script>
+/* Konfiguration */
+const RAW_GITHUB_ICS = 'https://raw.githubusercontent.com/ulba78/schule/main/schulkalender-2025-2026.ics';
+const CONFIG = { maxItems: 300, locale:'de-DE' };
+
+/* Zustand */
+const VIEW = { UPCOMING:'upcoming', TOP3:'top3', ALL:'all' };
+let currentView = VIEW.UPCOMING;
+let allEvents = [];
+const LS_KEY = 'ics-cache';
+const LS_TS = 'ics-cache-ts';
+
+/* ICS Parser (leichtgewichtig) */
+function unfoldICS(text){
+  const lines = text.replace(/\r\n/g,'\n').split('\n');
+  const out = [];
+  for (let i=0;i<lines.length;i++){
+    let ln = lines[i];
+    while (i+1 < lines.length && (lines[i+1].startsWith(' ') || lines[i+1].startsWith('\t'))){
+      ln += lines[i+1].slice(1);
+      i++;
+    }
+    out.push(ln);
+  }
+  return out;
+}
+
+function parseParams(prop){
+  const params = {};
+  if (!prop) return params;
+  const parts = prop.split(';').slice(1);
+  for (const p of parts){
+    const [k,v] = p.split('=');
+    if (k && v) params[k.toUpperCase()] = v;
+  }
+  return params;
+}
+
+function parseDate(val, params){
+  if (!val) return null;
+  // All-day (DATE) -> ohne Zeit
+  if ((params && params.VALUE === 'DATE') || /^\d{8}$/.test(val)){
+    const y=+val.slice(0,4), m=+val.slice(4,6)-1, d=+val.slice(6,8);
+    return new Date(y,m,d,0,0,0);
+  }
+  // UTC
+  if (val.endsWith('Z')) return new Date(val);
+  // Lokale Zeit (YYYYMMDDTHHMMSS)
+  const y = +val.slice(0,4), mo = +val.slice(4,6)-1, da = +val.slice(6,8);
+  const hh = +val.slice(9,11)||0, mi = +val.slice(11,13)||0, ss = +val.slice(13,15)||0;
+  return new Date(y,mo,da,hh,mi,ss);
+}
+
+function normalizeEvent(e){
+  const start = parseDate(e.dtstart, e.startParams);
+  if (!start || isNaN(start)) return null;
+  let end = e.dtend ? parseDate(e.dtend, e.endParams) : null;
+
+  const allDay = (e.startParams && e.startParams.VALUE==='DATE') || (/^\d{8}$/.test(e.dtstart));
+  if (allDay){
+    if (!end){ end = new Date(start); end.setDate(end.getDate()+1); }
+  } else if (!end){
+    // Fallback: 1 Stunde Dauer
+    end = new Date(start); end.setHours(end.getHours()+1);
+  }
+
+  return {
+    id: e.uid || (e.summary || 'Termin') + '@' + (+start),
+    title: e.summary || 'Termin',
+    description: e.description || '',
+    location: e.location || '',
+    start, end, allDay
+  };
+}
+
+function parseICS(ics){
+  const lines = unfoldICS(ics);
+  const events = [];
+  let cur = null;
+
+  for (const raw of lines){
+    const ln = raw.trim();
+    if (!ln) continue;
+    if (ln === 'BEGIN:VEVENT'){ cur = {}; continue; }
+    if (ln === 'END:VEVENT'){
+      if (cur){
+        if (cur.dtstart){
+          const ev = normalizeEvent(cur);
+          if (ev) events.push(ev);
+        }
+      }
+      cur = null;
+      continue;
+    }
+    if (!cur) continue;
+
+    const idx = ln.indexOf(':');
+    if (idx === -1) continue;
+    const keypart = ln.slice(0, idx);
+    const value = ln.slice(idx+1);
+
+    const [keyRaw] = keypart.split(';');
+    const key = keyRaw.toUpperCase();
+    const params = parseParams(keypart);
+
+    switch(key){
+      case 'UID': cur.uid = value; break;
+      case 'SUMMARY': cur.summary = value; break;
+      case 'DESCRIPTION': cur.description = value; break;
+      case 'LOCATION': cur.location = value; break;
+      case 'DTSTAMP': cur.dtstamp = value; break;
+      case 'DTSTART': cur.dtstart = value; cur.startParams = params; break;
+      case 'DTEND': cur.dtend = value; cur.endParams = params; break;
+      default: break;
+    }
+  }
+
+  events.sort((a,b)=>a.start - b.start);
+  return events;
+}
+
+/* Rendering */
+function escapeHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function formatTime(ev){
+  const fmtDate = new Intl.DateTimeFormat(CONFIG.locale,{weekday:'short', day:'2-digit', month:'2-digit'});
+  const fmtDT = new Intl.DateTimeFormat(CONFIG.locale,{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+  if (ev.allDay) return fmtDate.format(ev.start);
+  const now = new Date();
+  const diff = ev.start - now;
+  if (diff > 0 && diff < 24*3600*1000){
+    const hrs = Math.floor(diff/3600000);
+    if (hrs >= 1) return `in ${hrs}h`;
+    const mins = Math.floor(diff/60000);
+    return `in ${mins} Min`;
+  }
+  return fmtDT.format(ev.start);
+}
+
+function render(list){
+  const root = document.getElementById('agenda');
+  if (!list || list.length === 0){
+    root.innerHTML = '<div class="empty">Keine Termine.</div>';
+    return;
+  }
+  const html = list.map(ev=>{
+    const time = formatTime(ev);
+    const loc = ev.location ? `<div class="meta">${escapeHtml(ev.location)} ${ev.allDay?'<span class="small"> (ganztägig)</span>':''}</div>` : (ev.allDay?'<div class="meta"><span class="small">(ganztägig)</span></div>':'');
+    const desc = ev.description ? `<div class="meta">${escapeHtml(ev.description)}</div>` : '';
+    return `<div class="item" data-id="${ev.id}">
+      <div class="time">${time}</div>
+      <div class="title"><div style="font-weight:700">${escapeHtml(ev.title)}</div>${loc}</div>
+      ${desc}
+    </div>`;
+  }).join('');
+  root.innerHTML = html;
+}
+
+/* Filtering */
+function filterEvents(all){
+  const sorted = all.slice().sort((a,b)=>a.start - b.start);
+  const now = new Date(); now.setHours(0,0,0,0);
+  let list = currentView === VIEW.ALL ? sorted : sorted.filter(ev => ev.end >= now);
+  if (currentView === VIEW.TOP3) list = list.slice(0,3);
+  if (CONFIG.maxItems && CONFIG.maxItems>0) list = list.slice(0, CONFIG.maxItems);
+  return list;
+}
+
+/* Laden */
+async function fetchICS(url){
+  const res = await fetch(url, {cache:'no-store'});
+  if (!res.ok) throw new Error('Fetch failed: '+res.status);
+  return await res.text();
+}
+
+async function loadICS(){
+  try {
+    // Cache nutzen (5 Minuten)
+    const rawCache = localStorage.getItem(LS_KEY);
+    const ts = localStorage.getItem(LS_TS);
+    if (rawCache && ts){
+      const age = Date.now() - (+ts);
+      if (age < 5*60*1000){
+        document.getElementById('sourceNotice').textContent = 'Anzeige aus Cache';
+        return parseICS(rawCache);
+      }
+    }
+    document.getElementById('sourceNotice').textContent = 'Lade Kalender…';
+    const text = await fetchICS(RAW_GITHUB_ICS);
+    localStorage.setItem(LS_KEY, text);
+    localStorage.setItem(LS_TS, Date.now());
+    document.getElementById('sourceNotice').textContent = 'Live-Kalender';
+    return parseICS(text);
+  } catch(e){
+    console.error('Load failed:', e);
+    throw e;
+  }
+}
+
+/* UI-Events */
+document.getElementById('refreshBtn').addEventListener('click', ()=>{
+  localStorage.removeItem(LS_KEY);
+  localStorage.removeItem(LS_TS);
+  loadAndRender();
+});
+document.getElementById('clearCacheBtn').addEventListener('click', ()=>{
+  localStorage.removeItem(LS_KEY);
+  localStorage.removeItem(LS_TS);
+  document.getElementById('sourceNotice').textContent = 'Cache gelöscht';
+});
+document.getElementById('upcomingBtn').addEventListener('click', ()=>{
+  currentView = VIEW.UPCOMING; setActive('upcomingBtn'); render(filterEvents(allEvents));
+});
+document.getElementById('top3Btn').addEventListener('click', ()=>{
+  currentView = VIEW.TOP3; setActive('top3Btn'); render(filterEvents(allEvents));
+});
+document.getElementById('allBtn').addEventListener('click', ()=>{
+  currentView = VIEW.ALL; setActive('allBtn'); render(filterEvents(allEvents));
+});
+function setActive(btnId){
+  ['upcomingBtn','top3Btn','allBtn'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.classList.toggle('active', id===btnId);
+    el.setAttribute('aria-pressed', id===btnId ? 'true' : 'false');
+  });
+}
+
+/* Start */
+async function loadAndRender(){
+  try{
+    const evs = await loadICS();
+    allEvents = evs;
+    render(filterEvents(evs));
+  }catch(err){
+    document.getElementById('agenda').innerHTML = '<div class="empty">Fehler beim Laden der Termine.</div>';
+    document.getElementById('sourceNotice').textContent = 'Fehler';
+  }
+}
+setActive('upcomingBtn');
+loadAndRender();
+</script>
+</body>
+</html>
