@@ -1,10 +1,10 @@
 BEGIN:VCALENDAR
-PRODID:-//Schule Demo//Lehrerzimmer ICS//DE
+PRODID:-//Schule Demo//Lehrerzimmer ICS Exakt//DE
 VERSION:2.0
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-NAME:Lehrerzimmer Demo-Kalender
-X-WR-CALNAME:Lehrerzimmer Demo-Kalender
+NAME:Lehrerzimmer Exakt
+X-WR-CALNAME:Lehrerzimmer Exakt
 X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VTIMEZONE
 TZID:Europe/Berlin
@@ -26,8 +26,8 @@ END:STANDARD
 END:VTIMEZONE
 
 BEGIN:VEVENT
-UID:demo-ganztag-001@example.com
-DTSTAMP:20260331T080000Z
+UID:exakt-ganztag-001@example.com
+DTSTAMP:20260331T081530Z
 DTSTART;VALUE=DATE:20260402
 DTEND;VALUE=DATE:20260403
 SUMMARY:Ganztägig: Abgabe Klassenbuchkontrollen
@@ -35,42 +35,71 @@ DESCRIPTION:Interne Erinnerung – Abgabe bis Tagesende.
 END:VEVENT
 
 BEGIN:VEVENT
-UID:demo-termin-001@example.com
-DTSTAMP:20260331T080000Z
-DTSTART;TZID=Europe/Berlin:20260403T093000
-DTEND;TZID=Europe/Berlin:20260403T103000
-SUMMARY:Teamsitzung Fachschaft Deutsch
+UID:exakt-lokal-001@example.com
+DTSTAMP:20260331T081530Z
+DTSTART;TZID=Europe/Berlin:20260403T09{MM}30
+DTEND;TZID=Europe/Berlin:20260403T10{MM}00
+SUMMARY:Teamsitzung (Minutengenau)
 LOCATION:Lehrerzimmer A
-DESCRIPTION:Agenda: Klausurtermine\, Materialpool\, Fortbildung.
+DESCRIPTION:Teste hier die Anzeige mit „krummen“ Minuten.
 END:VEVENT
 
 BEGIN:VEVENT
-UID:demo-termin-002@example.com
-DTSTAMP:20260331T080000Z
-DTSTART;TZID=Europe/Berlin:20260404T153000
-DTEND;TZID=Europe/Berlin:20260404T163000
-SUMMARY:Elternsprechstunde (offen)
-LOCATION:Raum 204 oder online
-DESCRIPTION:Offene Sprechstunde – Anmeldung per Mail.
+UID:exakt-lokal-002@example.com
+DTSTAMP:20260331T081530Z
+DTSTART;TZID=Europe/Berlin:20260404T15{MM}45
+DTEND;TZID=Europe/Berlin:20260404T16{MM}15
+SUMMARY:Elternsprechstunde (Minutengenau)
+LOCATION:Raum 204
+DESCRIPTION:Beginn zur Viertel vor ...
 END:VEVENT
 
 BEGIN:VEVENT
-UID:demo-ganztag-002@example.com
-DTSTAMP:20260331T080000Z
-DTSTART;VALUE=DATE:20260407
-DTEND;VALUE=DATE:20260408
-SUMMARY:Ganztägig: Abgabe Dienstreiseanträge
-DESCRIPTION:Bitte bis 12:00 Uhr an das Sekretariat senden.
+UID:exakt-utc-001@example.com
+DTSTAMP:20260331T081530Z
+DTSTART:20260405T090000Z
+DTEND:20260405T094500Z
+SUMMARY:[UTC] Videokonferenz Fachschaft
+LOCATION:Online
+DESCRIPTION:Zeit in Zulu (UTC) – sollte lokal korrekt umgerechnet werden.
 END:VEVENT
 
 BEGIN:VEVENT
-UID:demo-termin-003@example.com
-DTSTAMP:20260331T080000Z
-DTSTART;TZID=Europe/Berlin:20260408T140000
-DTEND;TZID=Europe/Berlin:20260408T160000
-SUMMARY:Schulkonferenz
-LOCATION:Aula
-DESCRIPTION:Tagesordnung in itslearning unter Aktuelles.
+UID:exakt-utc-002@example.com
+DTSTAMP:20260331T081530Z
+DTSTART:20260406T120500Z
+DTEND:20260406T123000Z
+SUMMARY:[UTC] Kurz-Meeting mit Sekunden
+DESCRIPTION:Start exakt um 12:05:00Z – überprüfe Sekundenrundung.
 END:VEVENT
 
+BEGIN:VEVENT
+UID:exakt-lokal-003-nowplus10@example.com
+DTSTAMP:20260331T081530Z
+DTSTART;TZID=Europe/Berlin:20260401T101000
+DTEND;TZID=Europe/Berlin:20260401T104000
+SUMMARY:Jetzt+10 Test (anpassen!)
+DESCRIPTION:Passe Datum/Uhrzeit so an, dass der Start in ~10 Min. liegt.
+END:VEVENT
+
+BEGIN:VEVENT
+UID:exakt-lokal-004-sekunden@example.com
+DTSTAMP:20260331T081530Z
+DTSTART;TZID=Europe/Berlin:20260407T08{07}05
+DTEND;TZID=Europe/Berlin:20260407T09{57}05
+SUMMARY:Unterrichtsbesuch (Sekundenfrei, aber krumme Minuten)
+LOCATION:Raum 105
+DESCRIPTION:Prüfe Minutendarstellung ohne Sekunden.
+END:VEVENT
+
+BEGIN:VEVENT
+UID:exakt-ganztag-002@example.com
+DTSTAMP:20260331T081530Z
+DTSTART;VALUE=DATE:20260408
+DTEND;VALUE=DATE:20260409
+SUMMARY:Ganztägig: Unterlagen an Verwaltung
+DESCRIPTION:Bis 12 Uhr hochladen (ganztags-Ereignis).
+END:VEVENT
+
+END:VEVENT
 END:VCALENDAR
