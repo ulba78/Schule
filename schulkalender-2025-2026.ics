@@ -433,16 +433,6 @@ DESCRIPTION:Feiertag – kein Unterricht.
 END:VEVENT
 
 BEGIN:VEVENT
-UID:exakt-termin-040@example.com
-DTSTAMP:20260401T000000Z
-DTSTART;TZID=Europe/Berlin:20260604T090000
-DTEND;TZID=Europe/Berlin:20260604T100000
-SUMMARY:Beginn der Konsultationen
-LOCATION:Schule
-DESCRIPTION:Start der Prüfungs-Konsultationen laut Plan.
-END:VEVENT
-
-BEGIN:VEVENT
 UID:exakt-ganztag-041@example.com
 DTSTAMP:20260401T000000Z
 DTSTART;VALUE=DATE:20260501
