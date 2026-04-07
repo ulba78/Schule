@@ -3,7 +3,6 @@ VERSION:2.0
 PRODID:-//Schulkalender Import//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-
 BEGIN:VTIMEZONE
 TZID:Europe/Berlin
 X-LIC-LOCATION:Europe/Berlin
@@ -22,7 +21,6 @@ DTSTART:19701025T030000
 RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
-
 BEGIN:VEVENT
 UID:exakt-beginn-elterngespraech-001@example.com
 DTSTAMP:20260330T000000Z
@@ -32,7 +30,6 @@ SUMMARY:Beginn Elterngespräch
 LOCATION:Schule
 DESCRIPTION:Start der Elterngespräche mit Überblick und Terminabstimmung.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-offener-elternabend-002@example.com
 DTSTAMP:20260330T000000Z
@@ -42,7 +39,6 @@ SUMMARY:Offener Elternabend
 LOCATION:Schule
 DESCRIPTION:Informationen zum Schuljahr; Fragerunde der Eltern.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-dienstkonferenz-schilf-003@example.com
 DTSTAMP:20260330T000000Z
@@ -52,7 +48,6 @@ SUMMARY:Dienstkonferenz/Schilf
 LOCATION:Schule
 DESCRIPTION:Absprachen zu Konzepten und Fortbildungsinhalten.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-tag-der-deutschen-einheit-004@example.com
 DTSTAMP:20260330T000000Z
@@ -62,7 +57,6 @@ SUMMARY:Tag der Deutschen Einheit
 LOCATION:Schule
 DESCRIPTION:Feiertag – kein Unterricht, Gebäude geschlossen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-schilftag-005@example.com
 DTSTAMP:20260330T000000Z
@@ -72,7 +66,6 @@ SUMMARY:Schilftag
 LOCATION:Schule
 DESCRIPTION:Workshops zur Schulentwicklung und Teamarbeit.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-einschulung-006@example.com
 DTSTAMP:20260330T000000Z
@@ -82,7 +75,6 @@ SUMMARY:Einschulung
 LOCATION:Schule
 DESCRIPTION:Begrüßung der neuen Klassen; Programm in der Aula.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-fachschaften-1-007@example.com
 DTSTAMP:20260330T000000Z
@@ -92,7 +84,6 @@ SUMMARY:Fachschaften
 LOCATION:Schule
 DESCRIPTION:Abstimmung zu Vorhaben und Materialplanung.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-lesenacht-008@example.com
 DTSTAMP:20260330T000000Z
@@ -102,7 +93,6 @@ SUMMARY:Lesenacht
 LOCATION:Schule
 DESCRIPTION:Abend rund ums Lesen – gemeinsame Aktionen in den Klassen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-schueler-elternratswahl-009@example.com
 DTSTAMP:20260330T000000Z
@@ -112,7 +102,6 @@ SUMMARY:Schüler-Elternratswahl
 LOCATION:Schule
 DESCRIPTION:Wahlen der Gremien – klassenweise Termine beachten.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-lehrerkonferenz-010@example.com
 DTSTAMP:20260330T000000Z
@@ -122,7 +111,6 @@ SUMMARY:Lehrerkonferenz
 LOCATION:Schule
 DESCRIPTION:Berichte aus den Jahrgängen und Ausblick auf Projekte.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-lindgren-woche-011@example.com
 DTSTAMP:20260330T000000Z
@@ -132,7 +120,6 @@ SUMMARY:Lindgren Woche
 LOCATION:Schule
 DESCRIPTION:Themenaktionen zu Astrid Lindgren – Projektarbeit.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-beginn-prakt-kl9-012@example.com
 DTSTAMP:20260330T000000Z
@@ -142,7 +129,6 @@ SUMMARY:Beginn Praktikum Kl. 9
 LOCATION:Schule
 DESCRIPTION:Einweisung und letzte Hinweise vor Praktikumsstart.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-allg-warntag-013@example.com
 DTSTAMP:20260330T000000Z
@@ -152,7 +138,6 @@ SUMMARY:Allgemeiner Warntag
 LOCATION:Schule
 DESCRIPTION:Informationen zu Warnsystemen und Verhalten im Ernstfall.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-1-schulkonferenz-014@example.com
 DTSTAMP:20260330T000000Z
@@ -162,7 +147,6 @@ SUMMARY:1. Schulkonferenz
 LOCATION:Schule
 DESCRIPTION:Sitzung der Gremien; Beschlüsse zum Schuljahr.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-zwischenzeugnisse-015@example.com
 DTSTAMP:20260330T000000Z
@@ -172,7 +156,6 @@ SUMMARY:Zwischenzeugnisse
 LOCATION:Schule
 DESCRIPTION:Ausgabe der Halbjahresinformationen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-antraege-foerderbedarf-016@example.com
 DTSTAMP:20260330T000000Z
@@ -182,7 +165,6 @@ SUMMARY:Anträge Förderbedarf/Stundenreduktion
 LOCATION:Schule
 DESCRIPTION:Letzter Abgabetermin im Sekretariat.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-fachschaften-2-017@example.com
 DTSTAMP:20260330T000000Z
@@ -192,7 +174,6 @@ SUMMARY:Fachschaften
 LOCATION:Schule
 DESCRIPTION:Koordination von Curricula und Projekten.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-antrag-wiederholung-018@example.com
 DTSTAMP:20260330T000000Z
@@ -202,7 +183,6 @@ SUMMARY:Antrag auf Wiederholung/Konferenzen
 LOCATION:Schule
 DESCRIPTION:Beratung und Beschlussfassung in den Klassenkonferenzen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ende-elterngespraeche-019@example.com
 DTSTAMP:20260330T000000Z
@@ -212,7 +192,6 @@ SUMMARY:Ende Elterngespräche
 LOCATION:Schule
 DESCRIPTION:Abschluss und Feedbackrunde.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-fachschaften-3-020@example.com
 DTSTAMP:20260330T000000Z
@@ -222,7 +201,6 @@ SUMMARY:Fachschaften
 LOCATION:Schule
 DESCRIPTION:Planung der kommenden Unterrichtsvorhaben.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-antraege-versetzung-fahrten-021@example.com
 DTSTAMP:20260330T000000Z
@@ -232,7 +210,6 @@ SUMMARY:Anträge Versetzung/Schulfahrten
 LOCATION:Schule
 DESCRIPTION:Abgabe von Formularen und Genehmigungen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-elternvers-kl1-4-022@example.com
 DTSTAMP:20260330T000000Z
@@ -242,7 +219,6 @@ SUMMARY:Elternversammlung Klassen 1–4
 LOCATION:Schule
 DESCRIPTION:Informationen zum Schuljahr, Austausch mit Lehrkräften.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-abschluss-schuelerratswahl-023@example.com
 DTSTAMP:20260330T000000Z
@@ -252,7 +228,6 @@ SUMMARY:Abschluss Schülerratswahl
 LOCATION:Schule
 DESCRIPTION:Bekanntgabe der Ergebnisse; Konstituierung der Gremien.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-hallensportfest-1-024@example.com
 DTSTAMP:20260330T000000Z
@@ -262,7 +237,6 @@ SUMMARY:Hallensportfest
 LOCATION:Schule
 DESCRIPTION:Jahrgangswettkämpfe in der Sporthalle.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-hallensportfest-2-025@example.com
 DTSTAMP:20260330T000000Z
@@ -272,7 +246,6 @@ SUMMARY:Hallensportfest
 LOCATION:Schule
 DESCRIPTION:Finalrunden und Siegerehrung.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ende-prakt-kl9-026@example.com
 DTSTAMP:20260330T000000Z
@@ -282,7 +255,6 @@ SUMMARY:Ende Praktikum Klasse 9
 LOCATION:Schule
 DESCRIPTION:Rückkehr in den Unterricht; Berichte und Reflexion.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-abschluss-1-halbjahr-027@example.com
 DTSTAMP:20260330T000000Z
@@ -292,7 +264,6 @@ SUMMARY:Abschluss 1. Halbjahr
 LOCATION:Schule
 DESCRIPTION:Halbjahreswechsel; organisatorische Umstellungen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-elternvers-kl10-5-8-028@example.com
 DTSTAMP:20260330T000000Z
@@ -302,7 +273,6 @@ SUMMARY:Elternversammlung Kl. 10 / 5–8
 LOCATION:Schule
 DESCRIPTION:Parallelveranstaltungen zu Jahrgangsthemen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-elternvers-kl9-5-8-029@example.com
 DTSTAMP:20260330T000000Z
@@ -312,7 +282,6 @@ SUMMARY:Elternversammlung Kl. 9 / 5–8
 LOCATION:Schule
 DESCRIPTION:Informationen zu Projekten, Fahrten und Praktika.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-beginn-prakt-kl10-030@example.com
 DTSTAMP:20260330T000000Z
@@ -322,7 +291,6 @@ SUMMARY:Beginn Praktikum Klasse 10
 LOCATION:Schule
 DESCRIPTION:Start ins Praktikum; Hinweise zu Kontaktwegen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-wandertag-031@example.com
 DTSTAMP:20260330T000000Z
@@ -332,7 +300,6 @@ SUMMARY:Wandertag
 LOCATION:Schule
 DESCRIPTION:Ausflüge nach Klassen; Details von Klassenleitungen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ende-sommerzeit-032@example.com
 DTSTAMP:20260330T000000Z
@@ -342,7 +309,6 @@ SUMMARY:Ende der Sommerzeit
 LOCATION:Schule
 DESCRIPTION:Uhren umstellen – Beginn Winterzeit (CET).
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-1-033@example.com
 DTSTAMP:20260330T000000Z
@@ -352,7 +318,6 @@ SUMMARY:Zeugniskonferenzen
 LOCATION:Schule
 DESCRIPTION:Konferenzen für die Jahrgänge – Raumpläne beachten.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-2-034@example.com
 DTSTAMP:20260330T000000Z
@@ -362,7 +327,6 @@ SUMMARY:Zeugniskonferenzen
 LOCATION:Schule
 DESCRIPTION:Fortsetzung der Beratungen und Beschlüsse.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-3-035@example.com
 DTSTAMP:20260330T000000Z
@@ -372,7 +336,6 @@ SUMMARY:Zeugniskonferenzen
 LOCATION:Schule
 DESCRIPTION:Abschluss der Klassenkonferenzen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-4-036@example.com
 DTSTAMP:20260330T000000Z
@@ -382,7 +345,6 @@ SUMMARY:Zeugniskonferenzen
 LOCATION:Schule
 DESCRIPTION:Resttermine und Nachträge.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-schule-ohne-rassismus-037@example.com
 DTSTAMP:20260330T000000Z
@@ -392,26 +354,6 @@ SUMMARY:Schule ohne Rassismus
 LOCATION:Schule
 DESCRIPTION:Aktions- und Projekttag – Workshops und Präsentationen.
 END:VEVENT
-
-BEGIN:VTIMEZONE
-TZID:Europe/Berlin
-X-LIC-LOCATION:Europe/Berlin
-BEGIN:DAYLIGHT
-TZOFFSETFROM:+0100
-TZOFFSETTO:+0200
-TZNAME:CEST
-DTSTART:19700329T020000
-RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
-END:DAYLIGHT
-BEGIN:STANDARD
-TZOFFSETFROM:+0200
-TZOFFSETTO:+0100
-TZNAME:CET
-DTSTART:19701025T030000
-RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
-END:STANDARD
-END:VTIMEZONE
-
 BEGIN:VEVENT
 UID:exakt-ganztag-039@example.com
 DTSTAMP:20260401T000000Z
@@ -421,7 +363,6 @@ SUMMARY:Ostermontag
 LOCATION:Schule
 DESCRIPTION:Feiertag – kein Unterricht.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ganztag-041@example.com
 DTSTAMP:20260401T000000Z
@@ -431,7 +372,6 @@ SUMMARY:Tag der Arbeit
 LOCATION:Schule
 DESCRIPTION:Feiertag – kein Unterricht.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-042@example.com
 DTSTAMP:20260401T000000Z
@@ -441,7 +381,6 @@ SUMMARY:Letzter Unterrichtstag (Prüfungsjahrgänge)
 LOCATION:Schule
 DESCRIPTION:Letzter regulärer Unterrichtstag gemäß Jahresplan.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ganztag-043@example.com
 DTSTAMP:20260401T000000Z
@@ -451,7 +390,6 @@ SUMMARY:Christi Himmelfahrt
 LOCATION:Schule
 DESCRIPTION:Feiertag – kein Unterricht.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ganztag-044@example.com
 DTSTAMP:20260401T000000Z
@@ -461,7 +399,6 @@ SUMMARY:Pfingsten (Sonntag)
 LOCATION:Schule
 DESCRIPTION:Pfingstsonntag.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ganztag-045@example.com
 DTSTAMP:20260401T000000Z
@@ -471,7 +408,6 @@ SUMMARY:Pfingstmontag
 LOCATION:Schule
 DESCRIPTION:Feiertag – kein Unterricht.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-046@example.com
 DTSTAMP:20260401T000000Z
@@ -481,7 +417,6 @@ SUMMARY:Abschluss 2. Halbjahr
 LOCATION:Schule
 DESCRIPTION:Abschluss des zweiten Halbjahres laut Plan.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-047@example.com
 DTSTAMP:20260401T000000Z
@@ -491,7 +426,6 @@ SUMMARY:Zeugniskonferenzen Klassen 1–4
 LOCATION:Schule
 DESCRIPTION:Zeugniskonferenzen für die Klassenstufen 1 bis 4.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-048@example.com
 DTSTAMP:20260401T000000Z
@@ -501,7 +435,6 @@ SUMMARY:Zeugniskonferenzen
 LOCATION:Schule
 DESCRIPTION:Weitere Zeugniskonferenzen laut Plan.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-050@example.com
 DTSTAMP:20260401T000000Z
@@ -511,7 +444,6 @@ SUMMARY:Schriftliche Prüfung Deutsch
 LOCATION:Schule
 DESCRIPTION:Zentrale Prüfung – Fach Deutsch (08:00–12:00).
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-051@example.com
 DTSTAMP:20260401T000000Z
@@ -521,7 +453,6 @@ SUMMARY:Schriftliche Prüfung Englisch
 LOCATION:Schule
 DESCRIPTION:Zentrale Prüfung – Fach Englisch (08:00–12:00).
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-052@example.com
 DTSTAMP:20260401T000000Z
@@ -531,7 +462,6 @@ SUMMARY:Schriftliche Prüfung Mathematik
 LOCATION:Schule
 DESCRIPTION:Zentrale Prüfung – Fach Mathematik (08:00–12:00).
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-053@example.com
 DTSTAMP:20260401T000000Z
@@ -541,7 +471,6 @@ SUMMARY:Beginn mündliche Prüfungen
 LOCATION:Schule
 DESCRIPTION:Start der mündlichen Prüfungen gemäß Prüfungsplan.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-054@example.com
 DTSTAMP:20260401T000000Z
@@ -551,7 +480,6 @@ SUMMARY:Projekttag
 LOCATION:Schule
 DESCRIPTION:Projektarbeit in den Klassen.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-055@example.com
 DTSTAMP:20260401T000000Z
@@ -561,7 +489,6 @@ SUMMARY:Projekttag
 LOCATION:Schule
 DESCRIPTION:Fortsetzung der Projektarbeit.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-056@example.com
 DTSTAMP:20260401T000000Z
@@ -571,7 +498,6 @@ SUMMARY:Projekttag
 LOCATION:Schule
 DESCRIPTION:Abschlusspräsentationen der Projekte.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-termin-057@example.com
 DTSTAMP:20260401T000000Z
@@ -581,7 +507,6 @@ SUMMARY:Schulfest
 LOCATION:Schule
 DESCRIPTION:Sommerliches Schulfest mit Beiträgen aus den Projekten.
 END:VEVENT
-
 BEGIN:VEVENT
 UID:exakt-ganztag-058@example.com
 DTSTAMP:20260401T000000Z
@@ -591,8 +516,6 @@ SUMMARY:Zeugnisse
 LOCATION:Schule
 DESCRIPTION:Zeugnisausgabe zum Schuljahresende.
 END:VEVENT
-
-
 BEGIN:VEVENT
 UID:exakt-termin-059@example.com
 DTSTAMP:20260407T122929Z
@@ -602,5 +525,4 @@ SUMMARY:Prüfungseröffnungskonferenz
 LOCATION:Raum 101
 DESCRIPTION:Prüfungsordnung usw.
 END:VEVENT
-
 END:VCALENDAR
