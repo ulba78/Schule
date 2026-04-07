@@ -364,13 +364,12 @@ LOCATION:Schule
 DESCRIPTION:Feiertag – kein Unterricht.
 END:VEVENT
 BEGIN:VEVENT
-UID:exakt-ganztag-041@example.com
-DTSTAMP:20260401T000000Z
-DTSTART;VALUE=DATE:20260501
-DTEND;VALUE=DATE:20260502
-SUMMARY:Tag der Arbeit
-LOCATION:Schule
-DESCRIPTION:Feiertag – kein Unterricht.
+UID:exakt-ganztag-040@example.com
+DTSTART;TZID=Europe/Berlin:20260413T150000
+DTEND;TZID=Europe/Berlin:20260413T160000
+SUMMARY:Prüfungseröffnungskonferenz
+LOCATION:Raum 101
+DESCRIPTION:Prüfungsordnung usw.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-042@example.com
