@@ -46,7 +46,7 @@ DTSTART;TZID=Europe/Berlin:20250903T080000
 DTEND;TZID=Europe/Berlin:20250903T090000
 SUMMARY:Dienstkonferenz/Schilf
 LOCATION:Schule
-DESCRIPTION:Absprachen zu Konzepten und Fortbildungsinhalten.
+DESCRIPTION:Absprachen zu Konzepten und Fortbildungsinhalten
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-tag-der-deutschen-einheit-004@example.com
