@@ -421,40 +421,31 @@ async function doLoad(){
   }
 }
 async function doSave(){
-  setStatus('Erstelle Feature-Branch und speichere...');
+  setStatus('Speichere direkt in main...');
   const owner = UI.owner.value.trim(); const repo = UI.repo.value.trim();
-  const path = UI.path.value.trim(); const base = UI.baseBranch.value.trim();
-  const prefix = (UI.featurePrefix.value.trim() || CONFIG.FEATURE_BRANCH_PREFIX).replace(/\/+$/,'') + '/';
+  const path = UI.path.value.trim(); const base = UI.baseBranch.value.trim(); // bleibt 'main'
 
   if (!TOKEN){ alert('Bitte zuerst Token setzen.'); return; }
 
   try{
-    // 1) Aktuellen HEAD von base lesen
-    const ref = await getBranchRef(owner, repo, base);
-    const baseSha = ref.object.sha;
-
-    // 2) Branch-Namen generieren und anlegen
-    const dateTag = new Date().toISOString().slice(0,19).replace(/[-:T]/g,'');
-    const desiredBranch = `${prefix}${dateTag}`;
-    const featureBranch = await ensureUniqueBranchName(owner, repo, desiredBranch, baseSha);
-
-    // 3) Neueste Datei aus base holen (für SHA und Konflikte)
+    // 1) Neueste Datei und SHA aus main holen
     const latest = await getFile(owner, repo, path, base);
 
-    // 4) ICS serialisieren und committen auf Feature-Branch
+    // 2) ICS serialisieren
     const newIcs = serializeICS(events);
-    await putFile(owner, repo, path, featureBranch, `Update calendar via Web-Editor (${events.length} events)`, newIcs, latest.sha);
 
-    // 5) PR-Schritt entfällt – stattdessen Hinweis/Link zum Branch
-    const branchUrl = `https://github.com/${owner}/${repo}/tree/${featureBranch}`;
-    setStatus(`Gespeichert im Branch: ${featureBranch}`);
-    alert(`Gespeichert im Branch:\n${featureBranch}\n\nÖffnen: ${branchUrl}\nHinweis: PRs sind in diesem Repository deaktiviert.`);
+    // 3) Direkt in main committen
+    await putFile(owner, repo, path, base, `Direct update via Web-Editor (${events.length} events)`, newIcs, latest.sha);
+
+    setStatus('Gespeichert auf main.');
+    alert(`Gespeichert direkt auf ${owner}/${repo}@${base}\nDatei: ${path}`);
   }catch(e){
     console.error(e);
     setStatus('Fehler beim Speichern: ' + e.message);
     alert('Fehler beim Speichern: ' + e.message);
   }
 }
+
 
 // ===== Download Arbeitskopie =====
 function downloadICS(){
