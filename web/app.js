@@ -260,9 +260,9 @@ function serializeICS(evs){
       out.push(`DTSTART;TZID=${CONFIG.TZID}:${fmtDTLocal(e.start)}`);
       out.push(`DTEND;TZID=${CONFIG.TZID}:${fmtDTLocal(e.end)}`);
     }
-    out.push(`SUMMARY:${esc(e.title)}`);
-    if (e.location) out.push(`LOCATION:${esc(e.location)}`);
-    if (e.description) out.push(`DESCRIPTION:${esc(e.description)}`);
+    out.push(`SUMMARY;CHARSET=UTF-8:${esc(e.title)}`);
+if (e.location) out.push(`LOCATION;CHARSET=UTF-8:${esc(e.location)}`);
+if (e.description) out.push(`DESCRIPTION;CHARSET=UTF-8:${esc(e.description)}`);
     out.push('END:VEVENT');
   }
   out.push('END:VCALENDAR');
