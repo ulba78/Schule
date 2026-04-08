@@ -23,497 +23,497 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:exakt-offener-elternabend-002@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250902T080000
 DTEND;TZID=Europe/Berlin:20250902T090000
-SUMMARY:Offener Elternabend
-LOCATION:Schule
-DESCRIPTION:Informationen zum Schuljahr\\\\\\\; Fragerunde der Eltern.
+SUMMARY;CHARSET=UTF-8:Offener Elternabend
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Informationen zum Schuljahr\\\\\\\\\\\\\\\; Fragerunde der Eltern.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-dienstkonferenz-schilf-003@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250903T080000
 DTEND;TZID=Europe/Berlin:20250903T090000
-SUMMARY:Dienstkonferenz/Schilf
-LOCATION:Schule
-DESCRIPTION:Absprachen zu Konzepten und Fortbildungsinhalten
+SUMMARY;CHARSET=UTF-8:Dienstkonferenz/Schilf
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Absprachen zu Konzepten und Fortbildungsinhalten
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-schilftag-005@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250904T080000
 DTEND;TZID=Europe/Berlin:20250904T090000
-SUMMARY:Schilftag
-LOCATION:Schule
-DESCRIPTION:Workshops zur Schulentwicklung und Teamarbeit.
+SUMMARY;CHARSET=UTF-8:Schilftag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Workshops zur Schulentwicklung und Teamarbeit.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-einschulung-006@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250906T080000
 DTEND;TZID=Europe/Berlin:20250906T090000
-SUMMARY:Einschulung
-LOCATION:Schule
-DESCRIPTION:BegrÃÂÃÂ¼ÃÂÃÂung der neuen Klassen\\\\\\\; Programm in der Aula.
+SUMMARY;CHARSET=UTF-8:Einschulung
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:BegrÃÂÃÂÃÂÃÂ¼ÃÂÃÂÃÂÃÂung der neuen Klassen\\\\\\\\\\\\\\\; Programm in der Aula.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-schueler-elternratswahl-009@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250908T080000
 DTEND;TZID=Europe/Berlin:20250908T090000
-SUMMARY:SchÃÂÃÂ¼ler-Elternratswahl
-LOCATION:Schule
-DESCRIPTION:Wahlen der Gremien ÃÂ¢ÃÂÃÂ klassenweise Termine beachten.
+SUMMARY;CHARSET=UTF-8:SchÃÂÃÂÃÂÃÂ¼ler-Elternratswahl
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Wahlen der Gremien ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ klassenweise Termine beachten.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-fachschaften-2-017@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250915T080000
 DTEND;TZID=Europe/Berlin:20250915T090000
-SUMMARY:Fachschaften
-LOCATION:Schule
-DESCRIPTION:Koordination von Curricula und Projekten.
+SUMMARY;CHARSET=UTF-8:Fachschaften
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Koordination von Curricula und Projekten.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-elternvers-kl1-4-022@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250918T180000
 DTEND;TZID=Europe/Berlin:20250918T193000
-SUMMARY:Elternversammlung Klassen 1ÃÂ¢ÃÂÃÂ4
-LOCATION:Schule
-DESCRIPTION:Informationen zum Schuljahr\\\\\\\, Austausch mit LehrkrÃÂÃÂ¤ften.
+SUMMARY;CHARSET=UTF-8:Elternversammlung Klassen 1ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ4
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Informationen zum Schuljahr\\\\\\\\\\\\\\\, Austausch mit LehrkrÃÂÃÂÃÂÃÂ¤ften.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-abschluss-schuelerratswahl-023@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250919T080000
 DTEND;TZID=Europe/Berlin:20250919T090000
-SUMMARY:Abschluss SchÃÂÃÂ¼lerratswahl
-LOCATION:Schule
-DESCRIPTION:Bekanntgabe der Ergebnisse\\\\\\\; Konstituierung der Gremien.
+SUMMARY;CHARSET=UTF-8:Abschluss SchÃÂÃÂÃÂÃÂ¼lerratswahl
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Bekanntgabe der Ergebnisse\\\\\\\\\\\\\\\; Konstituierung der Gremien.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-elternvers-kl10-5-8-028@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250923T180000
 DTEND;TZID=Europe/Berlin:20250923T193000
-SUMMARY:Elternversammlung Kl. 10 / 5ÃÂ¢ÃÂÃÂ8
-LOCATION:Schule
-DESCRIPTION:Parallelveranstaltungen zu Jahrgangsthemen.
+SUMMARY;CHARSET=UTF-8:Elternversammlung Kl. 10 / 5ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ8
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Parallelveranstaltungen zu Jahrgangsthemen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-elternvers-kl9-5-8-029@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20250924T180000
 DTEND;TZID=Europe/Berlin:20250924T193000
-SUMMARY:Elternversammlung Kl. 9 / 5ÃÂ¢ÃÂÃÂ8
-LOCATION:Schule
-DESCRIPTION:Informationen zu Projekten\\\\\\\, Fahrten und Praktika.
+SUMMARY;CHARSET=UTF-8:Elternversammlung Kl. 9 / 5ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ8
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Informationen zu Projekten\\\\\\\\\\\\\\\, Fahrten und Praktika.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-wandertag-031@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20250925
 DTEND;VALUE=DATE:20250926
-SUMMARY:Wandertag
-LOCATION:Schule
-DESCRIPTION:AusflÃÂÃÂ¼ge nach Klassen\\\\\\\; Details von Klassenleitungen.
+SUMMARY;CHARSET=UTF-8:Wandertag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:AusflÃÂÃÂÃÂÃÂ¼ge nach Klassen\\\\\\\\\\\\\\\; Details von Klassenleitungen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-beginn-elterngespraech-001@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251001T090000
 DTEND;TZID=Europe/Berlin:20251001T100000
-SUMMARY:Beginn ElterngesprÃÂÃÂ¤ch
-LOCATION:Schule
-DESCRIPTION:Start der ElterngesprÃÂÃÂ¤che mit ÃÂÃÂberblick und Terminabstimmung.
+SUMMARY;CHARSET=UTF-8:Beginn ElterngesprÃÂÃÂÃÂÃÂ¤ch
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Start der ElterngesprÃÂÃÂÃÂÃÂ¤che mit ÃÂÃÂÃÂÃÂberblick und Terminabstimmung.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-tag-der-deutschen-einheit-004@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20251003
 DTEND;VALUE=DATE:20251004
-SUMMARY:Tag der Deutschen Einheit
-LOCATION:Schule
-DESCRIPTION:Feiertag ÃÂ¢ÃÂÃÂ kein Unterricht\\\\\\\, GebÃÂÃÂ¤ude geschlossen.
+SUMMARY;CHARSET=UTF-8:Tag der Deutschen Einheit
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Feiertag ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ kein Unterricht\\\\\\\\\\\\\\\, GebÃÂÃÂÃÂÃÂ¤ude geschlossen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-fachschaften-1-007@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251006T090000
 DTEND;TZID=Europe/Berlin:20251006T100000
-SUMMARY:Fachschaften
-LOCATION:Schule
-DESCRIPTION:Abstimmung zu Vorhaben und Materialplanung.
+SUMMARY;CHARSET=UTF-8:Fachschaften
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Abstimmung zu Vorhaben und Materialplanung.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-beginn-prakt-kl9-012@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251010T090000
 DTEND;TZID=Europe/Berlin:20251010T100000
-SUMMARY:Beginn Praktikum Kl. 9
-LOCATION:Schule
-DESCRIPTION:Einweisung und letzte Hinweise vor Praktikumsstart.
+SUMMARY;CHARSET=UTF-8:Beginn Praktikum Kl. 9
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Einweisung und letzte Hinweise vor Praktikumsstart.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-allg-warntag-013@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251011T090000
 DTEND;TZID=Europe/Berlin:20251011T100000
-SUMMARY:Allgemeiner Warntag
-LOCATION:Schule
-DESCRIPTION:Informationen zu Warnsystemen und Verhalten im Ernstfall.
+SUMMARY;CHARSET=UTF-8:Allgemeiner Warntag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Informationen zu Warnsystemen und Verhalten im Ernstfall.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-fachschaften-3-020@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251017T090000
 DTEND;TZID=Europe/Berlin:20251017T100000
-SUMMARY:Fachschaften
-LOCATION:Schule
-DESCRIPTION:Planung der kommenden Unterrichtsvorhaben.
+SUMMARY;CHARSET=UTF-8:Fachschaften
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Planung der kommenden Unterrichtsvorhaben.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-antraege-versetzung-fahrten-021@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251017T090000
 DTEND;TZID=Europe/Berlin:20251017T100000
-SUMMARY:AntrÃÂÃÂ¤ge Versetzung/Schulfahrten
-LOCATION:Schule
-DESCRIPTION:Abgabe von Formularen und Genehmigungen.
+SUMMARY;CHARSET=UTF-8:AntrÃÂÃÂÃÂÃÂ¤ge Versetzung/Schulfahrten
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Abgabe von Formularen und Genehmigungen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ende-sommerzeit-032@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20251026
 DTEND;VALUE=DATE:20251027
-SUMMARY:Ende der Sommerzeit
-LOCATION:Schule
-DESCRIPTION:Uhren umstellen ÃÂ¢ÃÂÃÂ Beginn Winterzeit (CET).
+SUMMARY;CHARSET=UTF-8:Ende der Sommerzeit
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Uhren umstellen ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Beginn Winterzeit (CET).
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-schule-ohne-rassismus-037@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251027T090000
 DTEND;TZID=Europe/Berlin:20251027T100000
-SUMMARY:Schule ohne Rassismus
-LOCATION:Schule
-DESCRIPTION:Aktions- und Projekttag ÃÂ¢ÃÂÃÂ Workshops und PrÃÂÃÂ¤sentationen.
+SUMMARY;CHARSET=UTF-8:Schule ohne Rassismus
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Aktions- und Projekttag ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Workshops und PrÃÂÃÂÃÂÃÂ¤sentationen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-1-schulkonferenz-014@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251111T090000
 DTEND;TZID=Europe/Berlin:20251111T100000
-SUMMARY:1. Schulkonferenz
-LOCATION:Schule
-DESCRIPTION:Sitzung der Gremien\\\\\\\; BeschlÃÂÃÂ¼sse zum Schuljahr.
+SUMMARY;CHARSET=UTF-8:1. Schulkonferenz
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Sitzung der Gremien\\\\\\\\\\\\\\\; BeschlÃÂÃÂÃÂÃÂ¼sse zum Schuljahr.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-hallensportfest-1-024@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251119T090000
 DTEND;TZID=Europe/Berlin:20251119T100000
-SUMMARY:Hallensportfest
-LOCATION:Schule
-DESCRIPTION:JahrgangswettkÃÂÃÂ¤mpfe in der Sporthalle.
+SUMMARY;CHARSET=UTF-8:Hallensportfest
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:JahrgangswettkÃÂÃÂÃÂÃÂ¤mpfe in der Sporthalle.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-hallensportfest-2-025@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251120T090000
 DTEND;TZID=Europe/Berlin:20251120T100000
-SUMMARY:Hallensportfest
-LOCATION:Schule
-DESCRIPTION:Finalrunden und Siegerehrung.
+SUMMARY;CHARSET=UTF-8:Hallensportfest
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Finalrunden und Siegerehrung.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-beginn-prakt-kl10-030@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20251124
 DTEND;VALUE=DATE:20251125
-SUMMARY:Beginn Praktikum Klasse 10
-LOCATION:Schule
-DESCRIPTION:Start ins Praktikum\\\\\\\; Hinweise zu Kontaktwegen.
+SUMMARY;CHARSET=UTF-8:Beginn Praktikum Klasse 10
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Start ins Praktikum\\\\\\\\\\\\\\\; Hinweise zu Kontaktwegen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-lesenacht-008@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251206T180000
 DTEND;TZID=Europe/Berlin:20251206T220000
-SUMMARY:Lesenacht
-LOCATION:Schule
-DESCRIPTION:Abend rund ums Lesen ÃÂ¢ÃÂÃÂ gemeinsame Aktionen in den Klassen.
+SUMMARY;CHARSET=UTF-8:Lesenacht
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Abend rund ums Lesen ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ gemeinsame Aktionen in den Klassen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-lehrerkonferenz-010@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251208T090000
 DTEND;TZID=Europe/Berlin:20251208T100000
-SUMMARY:Lehrerkonferenz
-LOCATION:Schule
-DESCRIPTION:Berichte aus den JahrgÃÂÃÂ¤ngen und Ausblick auf Projekte.
+SUMMARY;CHARSET=UTF-8:Lehrerkonferenz
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Berichte aus den JahrgÃÂÃÂÃÂÃÂ¤ngen und Ausblick auf Projekte.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-lindgren-woche-011@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20251209
 DTEND;VALUE=DATE:20251210
-SUMMARY:Lindgren Woche
-LOCATION:Schule
-DESCRIPTION:Themenaktionen zu Astrid Lindgren ÃÂ¢ÃÂÃÂ Projektarbeit.
+SUMMARY;CHARSET=UTF-8:Lindgren Woche
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Themenaktionen zu Astrid Lindgren ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Projektarbeit.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-zwischenzeugnisse-015@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20251213
 DTEND;VALUE=DATE:20251214
-SUMMARY:Zwischenzeugnisse
-LOCATION:Schule
-DESCRIPTION:Ausgabe der Halbjahresinformationen.
+SUMMARY;CHARSET=UTF-8:Zwischenzeugnisse
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Ausgabe der Halbjahresinformationen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-antraege-foerderbedarf-016@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20251214T090000
 DTEND;TZID=Europe/Berlin:20251214T100000
-SUMMARY:AntrÃÂÃÂ¤ge FÃÂÃÂ¶rderbedarf/Stundenreduktion
-LOCATION:Schule
-DESCRIPTION:Letzter Abgabetermin im Sekretariat.
+SUMMARY;CHARSET=UTF-8:AntrÃÂÃÂÃÂÃÂ¤ge FÃÂÃÂÃÂÃÂ¶rderbedarf/Stundenreduktion
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Letzter Abgabetermin im Sekretariat.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ende-prakt-kl9-026@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20251221
 DTEND;VALUE=DATE:20251222
-SUMMARY:Ende Praktikum Klasse 9
-LOCATION:Schule
-DESCRIPTION:RÃÂÃÂ¼ckkehr in den Unterricht\\\\\\\; Berichte und Reflexion.
+SUMMARY;CHARSET=UTF-8:Ende Praktikum Klasse 9
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:RÃÂÃÂÃÂÃÂ¼ckkehr in den Unterricht\\\\\\\\\\\\\\\; Berichte und Reflexion.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-antrag-wiederholung-018@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260115T090000
 DTEND;TZID=Europe/Berlin:20260115T100000
-SUMMARY:Antrag auf Wiederholung/Konferenzen
-LOCATION:Schule
-DESCRIPTION:Beratung und Beschlussfassung in den Klassenkonferenzen.
+SUMMARY;CHARSET=UTF-8:Antrag auf Wiederholung/Konferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Beratung und Beschlussfassung in den Klassenkonferenzen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ende-elterngespraeche-019@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260116T090000
 DTEND;TZID=Europe/Berlin:20260116T100000
-SUMMARY:Ende ElterngesprÃÂÃÂ¤che
-LOCATION:Schule
-DESCRIPTION:Abschluss und Feedbackrunde.
+SUMMARY;CHARSET=UTF-8:Ende ElterngesprÃÂÃÂÃÂÃÂ¤che
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Abschluss und Feedbackrunde.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-abschluss-1-halbjahr-027@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20260121
 DTEND;VALUE=DATE:20260122
-SUMMARY:Abschluss 1. Halbjahr
-LOCATION:Schule
-DESCRIPTION:Halbjahreswechsel\\\\\\\; organisatorische Umstellungen.
+SUMMARY;CHARSET=UTF-8:Abschluss 1. Halbjahr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Halbjahreswechsel\\\\\\\\\\\\\\\; organisatorische Umstellungen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-1-033@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260126T090000
 DTEND;TZID=Europe/Berlin:20260126T100000
-SUMMARY:Zeugniskonferenzen
-LOCATION:Schule
-DESCRIPTION:Konferenzen fÃÂÃÂ¼r die JahrgÃÂÃÂ¤nge ÃÂ¢ÃÂÃÂ RaumplÃÂÃÂ¤ne beachten.
+SUMMARY;CHARSET=UTF-8:Zeugniskonferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Konferenzen fÃÂÃÂÃÂÃÂ¼r die JahrgÃÂÃÂÃÂÃÂ¤nge ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ RaumplÃÂÃÂÃÂÃÂ¤ne beachten.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-2-034@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260127T090000
 DTEND;TZID=Europe/Berlin:20260127T100000
-SUMMARY:Zeugniskonferenzen
-LOCATION:Schule
-DESCRIPTION:Fortsetzung der Beratungen und BeschlÃÂÃÂ¼sse.
+SUMMARY;CHARSET=UTF-8:Zeugniskonferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Fortsetzung der Beratungen und BeschlÃÂÃÂÃÂÃÂ¼sse.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-3-035@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260128T090000
 DTEND;TZID=Europe/Berlin:20260128T100000
-SUMMARY:Zeugniskonferenzen
-LOCATION:Schule
-DESCRIPTION:Abschluss der Klassenkonferenzen.
+SUMMARY;CHARSET=UTF-8:Zeugniskonferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Abschluss der Klassenkonferenzen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-zeugniskonferenzen-4-036@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260129T090000
 DTEND;TZID=Europe/Berlin:20260129T100000
-SUMMARY:Zeugniskonferenzen
-LOCATION:Schule
-DESCRIPTION:Resttermine und NachtrÃÂÃÂ¤ge.
+SUMMARY;CHARSET=UTF-8:Zeugniskonferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Resttermine und NachtrÃÂÃÂÃÂÃÂ¤ge.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ganztag-039@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20260406
 DTEND;VALUE=DATE:20260407
-SUMMARY:Ostermontag
-LOCATION:Schule
-DESCRIPTION:Feiertag ÃÂ¢ÃÂÃÂ kein Unterricht.
+SUMMARY;CHARSET=UTF-8:Ostermontag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Feiertag ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ kein Unterricht.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-059@example.com
-DTSTAMP:20260408T184651Z
-DTSTART;TZID=Europe/Berlin:20260410T150000
-DTEND;TZID=Europe/Berlin:20260410T160000
-SUMMARY:PrÃ¼fungserÃ¶ffnungskonferenz
-LOCATION:Raum 101
-DESCRIPTION:PrÃ¼fungsordnung
+DTSTAMP:20260408T190514Z
+DTSTART;TZID=Europe/Berlin:20260409T150000
+DTEND;TZID=Europe/Berlin:20260409T160000
+SUMMARY;CHARSET=UTF-8:Prüfungseröffnungskonferenz
+LOCATION;CHARSET=UTF-8:Raum 101
+DESCRIPTION;CHARSET=UTF-8:Prüfungsordnung
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ganztag-043@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20260513
 DTEND;VALUE=DATE:20260514
-SUMMARY:Christi Himmelfahrt
-LOCATION:Schule
-DESCRIPTION:Feiertag kein Unterricht.
+SUMMARY;CHARSET=UTF-8:Christi Himmelfahrt
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Feiertag kein Unterricht.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-042@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260517T090000
 DTEND;TZID=Europe/Berlin:20260517T100000
-SUMMARY:Letzter Unterrichtstag (PrÃÂ¼fungsjahrgang)
-LOCATION:Schule
-DESCRIPTION:Letzter regulÃÂ¤rer Unterrichtstag gemÃÂ¤ÃÂ Jahresplan.
+SUMMARY;CHARSET=UTF-8:Letzter Unterrichtstag (PrÃÂÃÂ¼fungsjahrgang)
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Letzter regulÃÂÃÂ¤rer Unterrichtstag gemÃÂÃÂ¤ÃÂÃÂ Jahresplan.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-050@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260520T080000
 DTEND;TZID=Europe/Berlin:20260520T120000
-SUMMARY:Schriftliche PrÃÂ¼fung Deutsch
-LOCATION:Schule
-DESCRIPTION:Zentrale PrÃÂ¼fung Fach Deutsch (08:00-12:00).
+SUMMARY;CHARSET=UTF-8:Schriftliche PrÃÂÃÂ¼fung Deutsch
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Zentrale PrÃÂÃÂ¼fung Fach Deutsch (08:00-12:00).
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ganztag-044@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20260524
 DTEND;VALUE=DATE:20260525
-SUMMARY:Pfingsten (Sonntag)
-LOCATION:Schule
-DESCRIPTION:Pfingstsonntag.
+SUMMARY;CHARSET=UTF-8:Pfingsten (Sonntag)
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Pfingstsonntag.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ganztag-045@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20260524
 DTEND;VALUE=DATE:20260525
-SUMMARY:Pfingstmontag
-LOCATION:Schule
-DESCRIPTION:Feiertag kein Unterricht.
+SUMMARY;CHARSET=UTF-8:Pfingstmontag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Feiertag kein Unterricht.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-051@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260525T080000
 DTEND;TZID=Europe/Berlin:20260525T120000
-SUMMARY:Schriftliche PrÃÂ¼fung Englisch
-LOCATION:Schule
-DESCRIPTION:Zentrale PrÃÂ¼fung Fach Englisch (08:00-12:00).
+SUMMARY;CHARSET=UTF-8:Schriftliche PrÃÂÃÂ¼fung Englisch
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Zentrale PrÃÂÃÂ¼fung Fach Englisch (08:00-12:00).
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-052@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260528T080000
 DTEND;TZID=Europe/Berlin:20260528T120000
-SUMMARY:Schriftliche PrÃÂ¼fung Mathematik
-LOCATION:Schule
-DESCRIPTION:Zentrale PrÃÂ¼fung Fach Mathematik (08:00-12:00).
+SUMMARY;CHARSET=UTF-8:Schriftliche PrÃÂÃÂ¼fung Mathematik
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Zentrale PrÃÂÃÂ¼fung Fach Mathematik (08:00-12:00).
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-053@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260620T080000
 DTEND;TZID=Europe/Berlin:20260620T120000
-SUMMARY:Beginn mÃÂ¼ndliche PrÃÂ¼fungen
-LOCATION:Schule
-DESCRIPTION:Start der mÃÂ¼ndlichen PrÃÂ¼fungen gemÃÂ¤ÃÂ PrÃÂ¼fungsplan.
+SUMMARY;CHARSET=UTF-8:Beginn mÃÂÃÂ¼ndliche PrÃÂÃÂ¼fungen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Start der mÃÂÃÂ¼ndlichen PrÃÂÃÂ¼fungen gemÃÂÃÂ¤ÃÂÃÂ PrÃÂÃÂ¼fungsplan.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-046@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260624T090000
 DTEND;TZID=Europe/Berlin:20260624T100000
-SUMMARY:Abschluss 2. Halbjahr
-LOCATION:Schule
-DESCRIPTION:Abschluss des zweiten Halbjahres laut Plan.
+SUMMARY;CHARSET=UTF-8:Abschluss 2. Halbjahr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Abschluss des zweiten Halbjahres laut Plan.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-047@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260624T150000
 DTEND;TZID=Europe/Berlin:20260624T160000
-SUMMARY:Zeugniskonferenzen Klassen 1-4
-LOCATION:Schule
-DESCRIPTION:Zeugniskonferenzen fÃÂ¼r die Klassenstufen 1 bis 4.
+SUMMARY;CHARSET=UTF-8:Zeugniskonferenzen Klassen 1-4
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Zeugniskonferenzen fÃÂÃÂ¼r die Klassenstufen 1 bis 4.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-048@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260630T150000
 DTEND;TZID=Europe/Berlin:20260630T160000
-SUMMARY:Zeugniskonferenzen
-LOCATION:Schule
-DESCRIPTION:Weitere Zeugniskonferenzen laut Plan.
+SUMMARY;CHARSET=UTF-8:Zeugniskonferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Weitere Zeugniskonferenzen laut Plan.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-054@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260706T080000
 DTEND;TZID=Europe/Berlin:20260706T150000
-SUMMARY:Projekttag
-LOCATION:Schule
-DESCRIPTION:Projektarbeit in den Klassen.
+SUMMARY;CHARSET=UTF-8:Projekttag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Projektarbeit in den Klassen.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-055@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260707T080000
 DTEND;TZID=Europe/Berlin:20260707T150000
-SUMMARY:Projekttag
-LOCATION:Schule
-DESCRIPTION:Fortsetzung der Projektarbeit.
+SUMMARY;CHARSET=UTF-8:Projekttag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Fortsetzung der Projektarbeit.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-056@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260708T080000
 DTEND;TZID=Europe/Berlin:20260708T150000
-SUMMARY:Projekttag
-LOCATION:Schule
-DESCRIPTION:AbschlussprÃÂÃÂ¤sentationen der Projekte.
+SUMMARY;CHARSET=UTF-8:Projekttag
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:AbschlussprÃÂÃÂÃÂÃÂ¤sentationen der Projekte.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-termin-057@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;TZID=Europe/Berlin:20260708T090000
 DTEND;TZID=Europe/Berlin:20260708T160000
-SUMMARY:Schulfest
-LOCATION:Schule
-DESCRIPTION:Sommerliches Schulfest mit BeitrÃÂ¤gen aus den Projekten.
+SUMMARY;CHARSET=UTF-8:Schulfest
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Sommerliches Schulfest mit BeitrÃÂÃÂ¤gen aus den Projekten.
 END:VEVENT
 BEGIN:VEVENT
 UID:exakt-ganztag-058@example.com
-DTSTAMP:20260408T184651Z
+DTSTAMP:20260408T190514Z
 DTSTART;VALUE=DATE:20260710
 DTEND;VALUE=DATE:20260711
-SUMMARY:Zeugnisse
-LOCATION:Schule
-DESCRIPTION:Zeugnisausgabe zum Schuljahresende.
+SUMMARY;CHARSET=UTF-8:Zeugnisse
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Zeugnisausgabe zum Schuljahresende.
 END:VEVENT
 END:VCALENDAR
