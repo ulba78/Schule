@@ -150,23 +150,21 @@ function parseParams(prop){
 }
 // === Kleine Fixes: Helpers und deleteEvent ===
 
-// Helper: Prüft, ob String nur Ziffern ist (falls noch nicht vorhanden)
+// ==== FIX: fehlende Helpers im globalen Scope ====
+
+// Falls isDigits noch nicht global existiert (wird in parseDate genutzt)
 if (typeof isDigits === 'undefined') {
-  const isDigits = s => /^\d+$/.test(s);
-  // Wenn du die Funktion global verfügbar brauchst, entferne 'const' und
-  // deklariere stattdessen: function isDigits(s){ return /^\d+$/.test(s); }
-  // (Viele Stellen im Code verwenden isDigits innerhalb parseDate; falls parseDate
-  // in der Datei vor diesem Block steht, stattdessen definiere function isDigits...)
+  function isDigits(s){ return /^\d+$/.test(s); }
 }
 
-// Helper: Erzeuge ein Date-Objekt, das genau lokale Mitternacht repräsentiert
-// (WICHTIG: Diese Funktion MUSS im globalen Scope stehen, nicht innerhalb einer anderen Funktion.)
+// asLocalDateOnly wird in openModal benötigt
 if (typeof asLocalDateOnly === 'undefined') {
   function asLocalDateOnly(d){
     if (!d || !(d instanceof Date) || isNaN(d.getTime())) return null;
     return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
   }
 }
+
 
 // deleteEvent: Löscht das aktuell im Modal geöffnete Event
 // (Stelle sicher, dass editIndexGlobal im gleichen Scope existiert)
