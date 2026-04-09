@@ -156,8 +156,23 @@ function parseParams(prop){
 function parseDate(val, params){
   if (!val) return null;
 
-  // Helper: Prüft, ob String nur Ziffern ist
-  const isDigits = s => /^\d+$/.test(s);
+// ==== Helpers / Utils ====
+
+// Helper: Prüft, ob String nur Ziffern ist (bereits vorhanden)
+const isDigits = s => /^\d+$/.test(s);
+
+// Helper: Erzeuge ein Date-Objekt, das genau lokale Mitternacht repräsentiert
+function asLocalDateOnly(d){
+  if (!d || !(d instanceof Date) || isNaN(d.getTime())) return null;
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+}
+
+// ... weitere Helpers wie esc(), fmtDateLocal(), etc.
+
+// ==== UI / Modal ====
+// openModal(...)  ← nutzt asLocalDateOnly
+// saveEventFromForm(...)  ← nutzt valueAsDate und numerischen Date-Konstruktor
+
 
   // 1) DATE (ganztägig) -> lokale Mitternacht
   // Beispiele: "20260409" oder params.VALUE === 'DATE'
