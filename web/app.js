@@ -148,17 +148,72 @@ function parseParams(prop){
   }
   return params;
 }
+// Robust parseDate für ICS-Werte (COPY-PASTE)
+// - DATE (YYYYMMDD) oder VALUE=DATE -> lokale Mitternacht (ganztägig)
+// - DATETIME mit trailing 'Z' -> UTC (ISO-konform)
+// - DATETIME ohne 'Z' -> lokale Zeit
+// - akzeptiert Formate: YYYYMMDD, YYYYMMDDTHHMMSS, YYYYMMDDTHHMM, optional Z
 function parseDate(val, params){
   if (!val) return null;
-  if ((params && params.VALUE === 'DATE') || /^\d{8}$/.test(val)){
-    const y=+val.slice(0,4), m=+val.slice(4,6)-1, d=+val.slice(6,8);
-    return new Date(y,m,d,0,0,0);
+
+  // Helper: Prüft, ob String nur Ziffern ist
+  const isDigits = s => /^\d+$/.test(s);
+
+  // 1) DATE (ganztägig) -> lokale Mitternacht
+  // Beispiele: "20260409" oder params.VALUE === 'DATE'
+  if ((params && String(params.VALUE).toUpperCase() === 'DATE') || /^\d{8}$/.test(val)){
+    const y = +val.slice(0,4);
+    const m = +val.slice(4,6) - 1;
+    const d = +val.slice(6,8);
+    if (Number.isNaN(y) || Number.isNaN(m) || Number.isNaN(d)) return null;
+    return new Date(y, m, d, 0, 0, 0, 0); // lokale Mitternacht
   }
-  if (val.endsWith('Z')) return new Date(val);
-  const y = +val.slice(0,4), mo = +val.slice(4,6)-1, da = +val.slice(6,8);
-  const hh = +val.slice(9,11)||0, mi = +val.slice(11,13)||0, ss = +val.slice(13,15)||0;
-  return new Date(y,mo,da,hh,mi,ss);
+
+  // 2) DATETIME mit Z (UTC)
+  // Format: YYYYMMDDTHHMMSSZ  oder YYYYMMDDTHHMMZ (ohne Sekunden)
+  // Beispiel: 20260409T090000Z -> 2026-04-09T09:00:00Z
+  const reUtcFull = /^\d{8}T\d{6}Z$/;   // YYYYMMDDTHHMMSSZ
+  const reUtcNoSec = /^\d{8}T\d{4}Z$/;   // YYYYMMDDTHHMMZ
+  if (reUtcFull.test(val) || reUtcNoSec.test(val)){
+    // Baue ISO-String
+    const year = val.slice(0,4);
+    const month = val.slice(4,6);
+    const day = val.slice(6,8);
+    const hour = val.slice(9,11);
+    const minute = val.slice(11,13);
+    const second = (val.length >= 15 && isDigits(val.slice(13,15))) ? val.slice(13,15) : '00';
+    const iso = `${year}-${month}-${day}T${hour}:${minute}:${second}Z`;
+    const d = new Date(iso);
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+
+  // 3) DATETIME ohne Z -> lokale Zeit
+  // Formate: YYYYMMDDTHHMMSS  or YYYYMMDDTHHMM
+  const reLocalFull = /^\d{8}T\d{6}$/;  // YYYYMMDDTHHMMSS
+  const reLocalNoSec = /^\d{8}T\d{4}$/;  // YYYYMMDDTHHMM
+  if (reLocalFull.test(val) || reLocalNoSec.test(val)){
+    const y = +val.slice(0,4);
+    const mo = +val.slice(4,6) - 1;
+    const da = +val.slice(6,8);
+    const hh = +val.slice(9,11) || 0;
+    const mi = +val.slice(11,13) || 0;
+    const ss = (val.length >= 15 && isDigits(val.slice(13,15))) ? +val.slice(13,15) : 0;
+    if ([y,mo,da,hh,mi,ss].some(x => Number.isNaN(x))) return null;
+    return new Date(y, mo, da, hh, mi, ss, 0); // lokale Zeit
+  }
+
+  // 4) Falls andere Formate (z.B. ISO 2026-04-09T09:00:00Z) -> versuche Date-Constructor
+  try {
+    const d = new Date(val);
+    if (!Number.isNaN(d.getTime())) return d;
+  } catch (e) {
+    // ignore
+  }
+
+  // 5) Unbekanntes Format
+  return null;
 }
+
 function normalizeEvent(e){
   const start = parseDate(e.dtstart, e.startParams);
   if (!start || isNaN(start)) return null;
