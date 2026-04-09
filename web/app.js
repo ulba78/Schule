@@ -400,7 +400,7 @@ function renderList(){
 let editIndexGlobal = -1;
 function openModal(idx){
   editIndexGlobal = idx;
-  const ev = idx>=0 ? events[idx] : {
+  const ev = idx >= 0 ? events[idx] : {
     uid: crypto.randomUUID() + '@example.com',
     title: '',
     description: '',
@@ -409,19 +409,59 @@ function openModal(idx){
     end: new Date(new Date().getTime() + 60*60*1000),
     allDay: false
   };
+
+  // -- Setze Formularfelder --
   UI.fTitle.value = ev.title || '';
   UI.fLocation.value = ev.location || '';
   UI.fDescription.value = ev.description || '';
   UI.fAllDay.value = ev.allDay ? 'true' : 'false';
-  UI.fStartDate.valueAsDate = new Date(ev.start.getFullYear(), ev.start.getMonth(), ev.start.getDate());
-  UI.fEndDate.valueAsDate = new Date(ev.end.getFullYear(), ev.end.getMonth(), ev.end.getDate());
-  UI.fStartTime.value = `${String(ev.start.getHours()).padStart(2,'0')}:${String(ev.start.getMinutes()).padStart(2,'0')}`;
-  UI.fEndTime.value = `${String(ev.end.getHours()).padStart(2,'0')}:${String(ev.end.getMinutes()).padStart(2,'0')}`;
-  UI.fUid.textContent = 'UID: ' + ev.uid;
+
+  // Datum-Felder: immer lokale Mitternacht verwenden (vermeidet -1 Tag Probleme)
+  const startLocalDate = asLocalDateOnly(ev.start) || null;
+  let endLocalDate = asLocalDateOnly(ev.end) || null;
+
+  // Wenn allDay und intern ev.end als exklusives Ende (start + 1 Tag) gespeichert ist,
+  // zeigen wir in der UI das inklusive Enddatum (also ggf. start statt end).
+  if (ev.allDay && startLocalDate && endLocalDate) {
+    const oneDay = 24 * 3600 * 1000;
+    // Wenn ev.end === ev.start + 1 Tag -> UI-Ende soll gleich Start sein (inklusive Darstellung)
+    if ((ev.end.getTime() - ev.start.getTime()) === oneDay) {
+      endLocalDate = asLocalDateOnly(ev.start);
+    }
+  }
+
+  // Setze Date-Inputs mit valueAsDate (sicherer als strings)
+  UI.fStartDate.valueAsDate = startLocalDate;
+  UI.fEndDate.valueAsDate   = endLocalDate;
+
+  // Zeitfelder: immer aus ev.start/ev.end holen (lokale Stunden/Minuten)
+  // Falls ev.start/ev.end ungültig sind, fallback auf 09:00 / 10:00
+  try {
+    const sh = (typeof ev.start.getHours === 'function') ? String(ev.start.getHours()).padStart(2,'0') : '09';
+    const sm = (typeof ev.start.getMinutes === 'function') ? String(ev.start.getMinutes()).padStart(2,'0') : '00';
+    const eh = (typeof ev.end.getHours === 'function') ? String(ev.end.getHours()).padStart(2,'0') : '10';
+    const em = (typeof ev.end.getMinutes === 'function') ? String(ev.end.getMinutes()).padStart(2,'0') : '00';
+    UI.fStartTime.value = `${sh}:${sm}`;
+    UI.fEndTime.value   = `${eh}:${em}`;
+  } catch (e) {
+    UI.fStartTime.value = '09:00';
+    UI.fEndTime.value = '10:00';
+  }
+
+  // UID anzeigen (wenn vorhanden)
+  UI.fUid.textContent = 'UID: ' + (ev.uid || '');
+
+  // Sichtbarkeit der Zeitfelder abhängig von allDay
   toggleTimeFields();
+
+  // Modal öffnen
   UI.modalBackdrop.style.display = 'flex';
   UI.modalBackdrop.setAttribute('aria-hidden','false');
+
+  // Debug (optional): Konsole zeigt interne Werte
+  // console.log('openModal ev.start:', ev.start, 'startLocalDate:', startLocalDate, 'ev.end:', ev.end, 'endLocalDate:', endLocalDate);
 }
+
 function closeModal(){
   UI.modalBackdrop.style.display = 'none';
   UI.modalBackdrop.setAttribute('aria-hidden','true');
