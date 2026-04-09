@@ -148,6 +148,41 @@ function parseParams(prop){
   }
   return params;
 }
+// === Kleine Fixes: Helpers und deleteEvent ===
+
+// Helper: Prüft, ob String nur Ziffern ist (falls noch nicht vorhanden)
+if (typeof isDigits === 'undefined') {
+  const isDigits = s => /^\d+$/.test(s);
+  // Wenn du die Funktion global verfügbar brauchst, entferne 'const' und
+  // deklariere stattdessen: function isDigits(s){ return /^\d+$/.test(s); }
+  // (Viele Stellen im Code verwenden isDigits innerhalb parseDate; falls parseDate
+  // in der Datei vor diesem Block steht, stattdessen definiere function isDigits...)
+}
+
+// Helper: Erzeuge ein Date-Objekt, das genau lokale Mitternacht repräsentiert
+// (WICHTIG: Diese Funktion MUSS im globalen Scope stehen, nicht innerhalb einer anderen Funktion.)
+if (typeof asLocalDateOnly === 'undefined') {
+  function asLocalDateOnly(d){
+    if (!d || !(d instanceof Date) || isNaN(d.getTime())) return null;
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+  }
+}
+
+// deleteEvent: Löscht das aktuell im Modal geöffnete Event
+// (Stelle sicher, dass editIndexGlobal im gleichen Scope existiert)
+if (typeof deleteEvent === 'undefined') {
+  function deleteEvent(){
+    if (typeof editIndexGlobal === 'undefined' || editIndexGlobal < 0) return;
+    if (!confirm('Termin wirklich löschen?')) return;
+    // events-Array prüfen
+    if (Array.isArray(events) && events.length > editIndexGlobal){
+      events.splice(editIndexGlobal, 1);
+    }
+    closeModal();
+    renderList();
+  }
+}
+
 // Robust parseDate für ICS-Werte (COPY-PASTE)
 // - DATE (YYYYMMDD) oder VALUE=DATE -> lokale Mitternacht (ganztägig)
 // - DATETIME mit trailing 'Z' -> UTC (ISO-konform)
