@@ -476,19 +476,30 @@ function saveEventFromForm(){
   const allDay = UI.fAllDay.value === 'true';
   const sd = UI.fStartDate.valueAsDate;
   const ed = UI.fEndDate.valueAsDate;
+
   if (!sd || !ed){ alert('Bitte Start- und Enddatum setzen.'); return; }
 
-  let start = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), 0,0,0);
-  let end   = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), 0,0,0);
-  if (!allDay){
-    const [sh,sm] = (UI.fStartTime.value || '09:00').split(':').map(Number);
-    const [eh,em] = (UI.fEndTime.value || '10:00').split(':').map(Number);
-    start = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), sh||0, sm||0, 0);
-    end   = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), eh||0, em||0, 0);
+  // Baue lokale Date-Objekte ausschließlich mit numerischem Konstruktor
+  let start, end;
+  if (allDay){
+    // UI liefert inklusive Enddatum — intern behalten wir es inklusiv hier.
+    // Beim Serialisieren in ICS wird DTEND als exklusives Datum (end + 1) geschrieben.
+    start = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), 0, 0, 0, 0);
+    end   = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), 0, 0, 0, 0);
   } else {
-    end = new Date(end.getFullYear(), end.getMonth(), end.getDate(), 0,0,0);
+    // Lese Zeiten aus time-Inputs und kombiniere mit valueAsDate (lokal)
+    const [sh, sm] = (UI.fStartTime.value || '09:00').split(':').map(v => parseInt(v,10) || 0);
+    const [eh, em] = (UI.fEndTime.value || '10:00').split(':').map(v => parseInt(v,10) || 0);
+
+    start = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), sh, sm, 0, 0);
+    end   = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), eh, em, 0, 0);
   }
-  if (end <= start){ alert('Ende muss nach dem Start liegen.'); return; }
+
+  // Validierung: Ende muss nach Start liegen
+  if (end <= start){
+    alert('Ende muss nach dem Start liegen.');
+    return;
+  }
 
   const obj = {
     uid: (UI.fUid.textContent || '').replace('UID: ','') || (crypto.randomUUID()+'@example.com'),
@@ -497,6 +508,15 @@ function saveEventFromForm(){
     location: UI.fLocation.value.trim(),
     start, end, allDay
   };
+
+  if (editIndexGlobal >= 0) events[editIndexGlobal] = obj;
+  else events.push(obj);
+
+  events.sort((a,b)=>a.start - b.start);
+  closeModal();
+  renderList();
+}
+;
 
   if (editIndexGlobal >= 0) events[editIndexGlobal] = obj;
   else events.push(obj);
