@@ -1,10 +1,4 @@
-/* Schulkalender Editor – Feature-Branch (ohne PR)
-   Einfache Web-App zum Bearbeiten einer ICS-Datei direkt im GitHub-Repo.
-   Speichert in einem neuen Feature-Branch, ohne Pull Request zu öffnen.
-   Voraussetzungen:
-   - GitHub PAT mit Repo-Contents-Write (oder fine-grained Token mit "Contents: Read and Write")
-   - Hosting via GitHub Pages (oder lokal mit Live Server)
-*/
+/* Schulkalender Editor – Complete app.js (mit deleteEvent Listener) */
 
 const CONFIG = {
   OWNER: 'ulba78',
@@ -54,6 +48,7 @@ let TOKEN = getToken();
 let events = [];
 let currentView = 'upcoming';
 let editIndex = -1;
+let editIndexGlobal = -1;
 
 // ===== Token =====
 function setToken(tok){
@@ -148,51 +143,11 @@ function parseParams(prop){
   }
   return params;
 }
-// === Kleine Fixes: Helpers und deleteEvent ===
-
-// ==== FIX: fehlende Helpers im globalen Scope ====
-
-// Falls isDigits noch nicht global existiert (wird in parseDate genutzt)
-if (typeof isDigits === 'undefined') {
-  function isDigits(s){ return /^\d+$/.test(s); }
-}
-
-// asLocalDateOnly wird in openModal benötigt
-if (typeof asLocalDateOnly === 'undefined') {
-  function asLocalDateOnly(d){
-    if (!d || !(d instanceof Date) || isNaN(d.getTime())) return null;
-    return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
-  }
-}
-
-
-// deleteEvent: Löscht das aktuell im Modal geöffnete Event
-// (Stelle sicher, dass editIndexGlobal im gleichen Scope existiert)
-if (typeof deleteEvent === 'undefined') {
-  function deleteEvent(){
-    if (typeof editIndexGlobal === 'undefined' || editIndexGlobal < 0) return;
-    if (!confirm('Termin wirklich löschen?')) return;
-    // events-Array prüfen
-    if (Array.isArray(events) && events.length > editIndexGlobal){
-      events.splice(editIndexGlobal, 1);
-    }
-    closeModal();
-    renderList();
-  }
-}
-
-// Robust parseDate für ICS-Werte (COPY-PASTE)
-// - DATE (YYYYMMDD) oder VALUE=DATE -> lokale Mitternacht (ganztägig)
-// - DATETIME mit trailing 'Z' -> UTC (ISO-konform)
-// - DATETIME ohne 'Z' -> lokale Zeit
-// - akzeptiert Formate: YYYYMMDD, YYYYMMDDTHHMMSS, YYYYMMDDTHHMM, optional Z
-function parseDate(val, params){
-  if (!val) return null;
 
 // ==== Helpers / Utils ====
 
-// Helper: Prüft, ob String nur Ziffern ist (bereits vorhanden)
-const isDigits = s => /^\d+$/.test(s);
+// Helper: Prüft, ob String nur Ziffern ist
+function isDigits(s){ return /^\d+$/.test(s); }
 
 // Helper: Erzeuge ein Date-Objekt, das genau lokale Mitternacht repräsentiert
 function asLocalDateOnly(d){
@@ -200,15 +155,11 @@ function asLocalDateOnly(d){
   return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
 }
 
-// ... weitere Helpers wie esc(), fmtDateLocal(), etc.
-
-// ==== UI / Modal ====
-// openModal(...)  ← nutzt asLocalDateOnly
-// saveEventFromForm(...)  ← nutzt valueAsDate und numerischen Date-Konstruktor
-
+// Robust parseDate für ICS-Werte
+function parseDate(val, params){
+  if (!val) return null;
 
   // 1) DATE (ganztägig) -> lokale Mitternacht
-  // Beispiele: "20260409" oder params.VALUE === 'DATE'
   if ((params && String(params.VALUE).toUpperCase() === 'DATE') || /^\d{8}$/.test(val)){
     const y = +val.slice(0,4);
     const m = +val.slice(4,6) - 1;
@@ -218,12 +169,9 @@ function asLocalDateOnly(d){
   }
 
   // 2) DATETIME mit Z (UTC)
-  // Format: YYYYMMDDTHHMMSSZ  oder YYYYMMDDTHHMMZ (ohne Sekunden)
-  // Beispiel: 20260409T090000Z -> 2026-04-09T09:00:00Z
   const reUtcFull = /^\d{8}T\d{6}Z$/;   // YYYYMMDDTHHMMSSZ
   const reUtcNoSec = /^\d{8}T\d{4}Z$/;   // YYYYMMDDTHHMMZ
   if (reUtcFull.test(val) || reUtcNoSec.test(val)){
-    // Baue ISO-String
     const year = val.slice(0,4);
     const month = val.slice(4,6);
     const day = val.slice(6,8);
@@ -236,7 +184,6 @@ function asLocalDateOnly(d){
   }
 
   // 3) DATETIME ohne Z -> lokale Zeit
-  // Formate: YYYYMMDDTHHMMSS  or YYYYMMDDTHHMM
   const reLocalFull = /^\d{8}T\d{6}$/;  // YYYYMMDDTHHMMSS
   const reLocalNoSec = /^\d{8}T\d{4}$/;  // YYYYMMDDTHHMM
   if (reLocalFull.test(val) || reLocalNoSec.test(val)){
@@ -250,7 +197,7 @@ function asLocalDateOnly(d){
     return new Date(y, mo, da, hh, mi, ss, 0); // lokale Zeit
   }
 
-  // 4) Falls andere Formate (z.B. ISO 2026-04-09T09:00:00Z) -> versuche Date-Constructor
+  // 4) Fallback: Date-Constructor
   try {
     const d = new Date(val);
     if (!Number.isNaN(d.getTime())) return d;
@@ -357,16 +304,17 @@ function serializeICS(evs){
     out.push(`UID:${e.uid}`);
     out.push(`DTSTAMP:${fmtStampUtc()}`);
     if (e.allDay){
+      const endExcl = new Date(e.end.getFullYear(), e.end.getMonth(), e.end.getDate());
+      endExcl.setDate(endExcl.getDate() + 1);
       out.push(`DTSTART;VALUE=DATE:${fmtDateLocal(e.start)}`);
-      out.push(`DTEND;VALUE=DATE:${fmtDateLocal(e.end)}`);
+      out.push(`DTEND;VALUE=DATE:${fmtDateLocal(endExcl)}`);
     } else {
       out.push(`DTSTART;TZID=${CONFIG.TZID}:${fmtDTLocal(e.start)}`);
       out.push(`DTEND;TZID=${CONFIG.TZID}:${fmtDTLocal(e.end)}`);
     }
     out.push(`SUMMARY;CHARSET=UTF-8:${esc(e.title)}`);
-if (e.location) out.push(`LOCATION;CHARSET=UTF-8:${esc(e.location)}`);
-if (e.description) out.push(`DESCRIPTION;CHARSET=UTF-8:${esc(e.description)}`);
-
+    if (e.location) out.push(`LOCATION;CHARSET=UTF-8:${esc(e.location)}`);
+    if (e.description) out.push(`DESCRIPTION;CHARSET=UTF-8:${esc(e.description)}`);
     out.push('END:VEVENT');
   }
   out.push('END:VCALENDAR');
@@ -420,6 +368,7 @@ function renderList(){
     </div>
   `).join('');
 
+  // Event-Handler für Edit-Buttons binden
   document.querySelectorAll('.editBtn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const uid = btn.getAttribute('data-uid');
@@ -430,7 +379,6 @@ function renderList(){
 }
 
 // ===== Modal =====
-let editIndexGlobal = -1;
 function openModal(idx){
   editIndexGlobal = idx;
   const ev = idx >= 0 ? events[idx] : {
@@ -457,7 +405,6 @@ function openModal(idx){
   // zeigen wir in der UI das inklusive Enddatum (also ggf. start statt end).
   if (ev.allDay && startLocalDate && endLocalDate) {
     const oneDay = 24 * 3600 * 1000;
-    // Wenn ev.end === ev.start + 1 Tag -> UI-Ende soll gleich Start sein (inklusive Darstellung)
     if ((ev.end.getTime() - ev.start.getTime()) === oneDay) {
       endLocalDate = asLocalDateOnly(ev.start);
     }
@@ -468,7 +415,6 @@ function openModal(idx){
   UI.fEndDate.valueAsDate   = endLocalDate;
 
   // Zeitfelder: immer aus ev.start/ev.end holen (lokale Stunden/Minuten)
-  // Falls ev.start/ev.end ungültig sind, fallback auf 09:00 / 10:00
   try {
     const sh = (typeof ev.start.getHours === 'function') ? String(ev.start.getHours()).padStart(2,'0') : '09';
     const sm = (typeof ev.start.getMinutes === 'function') ? String(ev.start.getMinutes()).padStart(2,'0') : '00';
@@ -490,9 +436,6 @@ function openModal(idx){
   // Modal öffnen
   UI.modalBackdrop.style.display = 'flex';
   UI.modalBackdrop.setAttribute('aria-hidden','false');
-
-  // Debug (optional): Konsole zeigt interne Werte
-  // console.log('openModal ev.start:', ev.start, 'startLocalDate:', startLocalDate, 'ev.end:', ev.end, 'endLocalDate:', endLocalDate);
 }
 
 function closeModal(){
@@ -502,9 +445,25 @@ function closeModal(){
 }
 function toggleTimeFields(){
   const allDay = UI.fAllDay.value === 'true';
-  document.getElementById('timeStartWrap').style.display = allDay ? 'none' : '';
-  document.getElementById('timeEndWrap').style.display = allDay ? 'none' : '';
+  const ts = document.getElementById('timeStartWrap');
+  const te = document.getElementById('timeEndWrap');
+  if (ts) ts.style.display = allDay ? 'none' : '';
+  if (te) te.style.display = allDay ? 'none' : '';
 }
+
+function deleteEvent(){
+  if (typeof editIndexGlobal === 'undefined' || editIndexGlobal < 0){
+    closeModal();
+    return;
+  }
+  if (!confirm('Termin wirklich löschen?')) return;
+  if (Array.isArray(events) && events.length > editIndexGlobal){
+    events.splice(editIndexGlobal, 1);
+  }
+  closeModal();
+  renderList();
+}
+
 function saveEventFromForm(){
   const allDay = UI.fAllDay.value === 'true';
   const sd = UI.fStartDate.valueAsDate;
@@ -594,7 +553,6 @@ async function doSave(){
   }
 }
 
-
 // ===== Download Arbeitskopie =====
 function downloadICS(){
   const text = serializeICS(events);
@@ -636,4 +594,3 @@ UI.fAllDay.addEventListener('change', toggleTimeFields);
   setNotice('Bereit. Bitte Token setzen und „Laden“ klicken.');
   setStatus('bereit');
 })();
-
