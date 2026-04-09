@@ -516,22 +516,6 @@ function saveEventFromForm(){
   closeModal();
   renderList();
 }
-;
-
-  if (editIndexGlobal >= 0) events[editIndexGlobal] = obj;
-  else events.push(obj);
-
-  events.sort((a,b)=>a.start-b.start);
-  closeModal();
-  renderList();
-}
-function deleteEvent(){
-  if (editIndexGlobal < 0){ return; }
-  if (!confirm('Termin wirklich löschen?')) return;
-  events.splice(editIndexGlobal, 1);
-  closeModal();
-  renderList();
-}
 
 // ===== Load/Save =====
 async function doLoad(){
