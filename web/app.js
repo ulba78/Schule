@@ -454,10 +454,18 @@ function openModal(idx){
   }
 
   // Date-Inputs setzen – Variante A: valueAsDate (Standardweg)
-  UI.fStartDate.valueAsDate = startLocalDate;
-  UI.fEndDate.valueAsDate   = endLocalDate;
+// Robuste Variante: explizit YYYY-MM-DD setzen
+function toYYYYMMDD(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const da = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${da}`;
+}
+UI.fStartDate.value = startLocalDate ? toYYYYMMDD(startLocalDate) : '';
+UI.fEndDate.value   = endLocalDate ? toYYYYMMDD(endLocalDate) : '';
 
-  console.log('DBG input values after valueAsDate:', 'start=', UI.fStartDate.value, 'end=', UI.fEndDate.value);
+console.log('DBG input values after explicit YYYY-MM-DD:', 'start=', UI.fStartDate.value, 'end=', UI.fEndDate.value);
+
 
   // Falls du zusätzlich die string-basierte, super-robuste Variante testen willst, ent-kommentiere:
   /*
