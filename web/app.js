@@ -535,8 +535,19 @@ function deleteEvent(){
 
 function saveEventFromForm(){
   const allDay = UI.fAllDay.value === 'true';
-  const sd = UI.fStartDate.valueAsDate;
-  const ed = UI.fEndDate.valueAsDate;
+ let sd = UI.fStartDate.valueAsDate;
+let ed = UI.fEndDate.valueAsDate;
+
+// Fallback, falls valueAsDate leer ist
+function parseYMD(s){
+  if (!s) return null;
+  const [yy, mm, dd] = s.split('-').map(Number);
+  if (!yy || !mm || !dd) return null;
+  return new Date(yy, mm - 1, dd, 0, 0, 0, 0);
+}
+if (!sd) sd = parseYMD(UI.fStartDate.value);
+if (!ed) ed = parseYMD(UI.fEndDate.value);
+
 
   if (!sd || !ed){ alert('Bitte Start- und Enddatum setzen.'); return; }
 
