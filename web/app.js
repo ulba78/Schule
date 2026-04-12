@@ -402,8 +402,20 @@ function renderList(){
 }
 
 // ===== Modal =====
+// Helper (falls noch nicht vorhanden – NICHT doppelt einfügen)
+function asLocalDateOnly(d){
+  if (!d || !(d instanceof Date) || isNaN(d.getTime())) return null;
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+}
+
 function openModal(idx){
   editIndexGlobal = idx;
+
+  // Debug: Rohdaten aus events
+  console.log('DBG idx:', idx);
+  console.log('DBG events[idx]?.start RAW:', events[idx]?.start, events[idx]?.start?.toString?.(), events[idx]?.start?.toISOString?.());
+  console.log('DBG events[idx]?.end   RAW:', events[idx]?.end, events[idx]?.end?.toString?.(), events[idx]?.end?.toISOString?.());
+
   const ev = idx >= 0 ? events[idx] : {
     uid: crypto.randomUUID() + '@example.com',
     title: '',
@@ -414,30 +426,53 @@ function openModal(idx){
     allDay: false
   };
 
+  // Debug: Event-Objekt, das wir ins UI laden
+  console.log('DBG ev.start:', ev.start, ev.start?.toString?.(), ev.start?.toISOString?.());
+  console.log('DBG ev.end  :', ev.end,   ev.end?.toString?.(),   ev.end?.toISOString?.());
+  console.log('DBG ev.allDay:', ev.allDay);
+
   // -- Setze Formularfelder --
   UI.fTitle.value = ev.title || '';
   UI.fLocation.value = ev.location || '';
   UI.fDescription.value = ev.description || '';
   UI.fAllDay.value = ev.allDay ? 'true' : 'false';
 
-  // Datum-Felder: immer lokale Mitternacht verwenden (vermeidet -1 Tag Probleme)
+  // Lokale Mitternacht für Date-Inputs
   const startLocalDate = asLocalDateOnly(ev.start) || null;
   let endLocalDate = asLocalDateOnly(ev.end) || null;
 
-  // Wenn allDay und intern ev.end als exklusives Ende (start + 1 Tag) gespeichert ist,
-  // zeigen wir in der UI das inklusive Enddatum (also ggf. start statt end).
+  console.log('DBG startLocalDate (before allDay adjust):', startLocalDate?.toString?.(), startLocalDate?.toISOString?.());
+  console.log('DBG endLocalDate   (before allDay adjust):', endLocalDate?.toString?.(),   endLocalDate?.toISOString?.());
+
+  // AllDay: exklusive DTEND im UI als inklusiv darstellen
   if (ev.allDay && startLocalDate && endLocalDate) {
     const oneDay = 24 * 3600 * 1000;
     if ((ev.end.getTime() - ev.start.getTime()) === oneDay) {
       endLocalDate = asLocalDateOnly(ev.start);
+      console.log('DBG allDay adjust: endLocalDate := startLocalDate');
     }
   }
 
-  // Setze Date-Inputs mit valueAsDate (sicherer als strings)
+  // Date-Inputs setzen – Variante A: valueAsDate (Standardweg)
   UI.fStartDate.valueAsDate = startLocalDate;
   UI.fEndDate.valueAsDate   = endLocalDate;
 
-  // Zeitfelder: immer aus ev.start/ev.end holen (lokale Stunden/Minuten)
+  console.log('DBG input values after valueAsDate:', 'start=', UI.fStartDate.value, 'end=', UI.fEndDate.value);
+
+  // Falls du zusätzlich die string-basierte, super-robuste Variante testen willst, ent-kommentiere:
+  /*
+  function toYYYYMMDD(d){
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const da = String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${da}`;
+  }
+  UI.fStartDate.value = startLocalDate ? toYYYYMMDD(startLocalDate) : '';
+  UI.fEndDate.value   = endLocalDate ? toYYYYMMDD(endLocalDate) : '';
+  console.log('DBG input values after explicit YYYY-MM-DD:', 'start=', UI.fStartDate.value, 'end=', UI.fEndDate.value);
+  */
+
+  // Zeiten in die Time-Inputs
   try {
     const sh = (typeof ev.start.getHours === 'function') ? String(ev.start.getHours()).padStart(2,'0') : '09';
     const sm = (typeof ev.start.getMinutes === 'function') ? String(ev.start.getMinutes()).padStart(2,'0') : '00';
@@ -450,16 +485,19 @@ function openModal(idx){
     UI.fEndTime.value = '10:00';
   }
 
-  // UID anzeigen (wenn vorhanden)
+  // UID anzeigen
   UI.fUid.textContent = 'UID: ' + (ev.uid || '');
 
-  // Sichtbarkeit der Zeitfelder abhängig von allDay
+  // Sichtbarkeit der Zeitfelder
   toggleTimeFields();
 
   // Modal öffnen
   UI.modalBackdrop.style.display = 'flex';
   UI.modalBackdrop.setAttribute('aria-hidden','false');
+
+  console.log('DBG modal opened.');
 }
+
 
 function closeModal(){
   UI.modalBackdrop.style.display = 'none';
