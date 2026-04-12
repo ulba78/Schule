@@ -1,4 +1,4 @@
-/* Schulkalender Editor – Complete app.js (mit deleteEvent Listener) */
+/* Schulkalender Editor – Final app.js (ohne Debug-Logs) */
 
 const CONFIG = {
   OWNER: 'ulba78',
@@ -47,7 +47,6 @@ const UI = {
 let TOKEN = getToken();
 let events = [];
 let currentView = 'upcoming';
-let editIndex = -1;
 let editIndexGlobal = -1;
 
 // ===== Token =====
@@ -87,19 +86,19 @@ async function ghPostJson(url, body){
 }
 async function getBranchRef(owner, repo, branch){
   const url = `https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(branch)}`;
-  return await ghGetJson(url); // {ref, object:{sha}}
+  return await ghGetJson(url);
 }
 async function createBranch(owner, repo, branchName, fromSha){
   const url = `https://api.github.com/repos/${owner}/${repo}/git/refs`;
   return await ghPostJson(url, { ref: `refs/heads/${branchName}`, sha: fromSha });
 }
+
 // Sicheres getFile: Base64 -> UTF-8 korrekt decodieren
 async function getFile(owner, repo, path, branch){
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(branch)}`;
   const json = await ghGetJson(url);
   if (!json || !json.content || !json.sha) throw new Error('File not found or invalid content response');
 
-  // Decode base64 to bytes, then decode UTF-8
   const b64 = json.content.replace(/\n/g,'');
   const bin = atob(b64);
   const bytes = new Uint8Array(bin.length);
@@ -114,11 +113,9 @@ async function getFile(owner, repo, path, branch){
 async function putFile(owner, repo, path, branch, message, contentText, sha){
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
 
-  // UTF-8 -> bytes
   const encoder = new TextEncoder();
   const bytes = encoder.encode(contentText);
 
-  // bytes -> binary string for btoa
   let binary = '';
   for (let i = 0; i < bytes.length; i++) {
     binary += String.fromCharCode(bytes[i]);
@@ -168,14 +165,16 @@ function parseParams(prop){
 }
 
 // ==== Helpers / Utils ====
-
-// Helper: Prüft, ob String nur Ziffern ist
 function isDigits(s){ return /^\d+$/.test(s); }
-
-// Helper: Erzeuge ein Date-Objekt, das genau lokale Mitternacht repräsentiert
 function asLocalDateOnly(d){
   if (!d || !(d instanceof Date) || isNaN(d.getTime())) return null;
   return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+}
+function toYYYYMMDD(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const da = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${da}`;
 }
 
 // Robust parseDate für ICS-Werte
@@ -188,12 +187,12 @@ function parseDate(val, params){
     const m = +val.slice(4,6) - 1;
     const d = +val.slice(6,8);
     if (Number.isNaN(y) || Number.isNaN(m) || Number.isNaN(d)) return null;
-    return new Date(y, m, d, 0, 0, 0, 0); // lokale Mitternacht
+    return new Date(y, m, d, 0, 0, 0, 0);
   }
 
   // 2) DATETIME mit Z (UTC)
-  const reUtcFull = /^\d{8}T\d{6}Z$/;   // YYYYMMDDTHHMMSSZ
-  const reUtcNoSec = /^\d{8}T\d{4}Z$/;   // YYYYMMDDTHHMMZ
+  const reUtcFull = /^\d{8}T\d{6}Z$/;
+  const reUtcNoSec = /^\d{8}T\d{4}Z$/;
   if (reUtcFull.test(val) || reUtcNoSec.test(val)){
     const year = val.slice(0,4);
     const month = val.slice(4,6);
@@ -207,8 +206,8 @@ function parseDate(val, params){
   }
 
   // 3) DATETIME ohne Z -> lokale Zeit
-  const reLocalFull = /^\d{8}T\d{6}$/;  // YYYYMMDDTHHMMSS
-  const reLocalNoSec = /^\d{8}T\d{4}$/;  // YYYYMMDDTHHMM
+  const reLocalFull = /^\d{8}T\d{6}$/;
+  const reLocalNoSec = /^\d{8}T\d{4}$/;
   if (reLocalFull.test(val) || reLocalNoSec.test(val)){
     const y = +val.slice(0,4);
     const mo = +val.slice(4,6) - 1;
@@ -217,18 +216,15 @@ function parseDate(val, params){
     const mi = +val.slice(11,13) || 0;
     const ss = (val.length >= 15 && isDigits(val.slice(13,15))) ? +val.slice(13,15) : 0;
     if ([y,mo,da,hh,mi,ss].some(x => Number.isNaN(x))) return null;
-    return new Date(y, mo, da, hh, mi, ss, 0); // lokale Zeit
+    return new Date(y, mo, da, hh, mi, ss, 0);
   }
 
-  // 4) Fallback: Date-Constructor
+  // 4) Fallback
   try {
     const d = new Date(val);
     if (!Number.isNaN(d.getTime())) return d;
-  } catch (e) {
-    // ignore
-  }
+  } catch (e){}
 
-  // 5) Unbekanntes Format
   return null;
 }
 
@@ -247,9 +243,11 @@ function normalizeEvent(e){
     title: e.summary || 'Termin',
     description: e.description || '',
     location: e.location || '',
-    start, end, allDay
+    start, end, allDay,
+    stamp: e.dtstamp || null
   };
 }
+
 function parseICS(ics){
   const lines = unfoldICS(ics);
   const events = [];
@@ -285,6 +283,7 @@ function parseICS(ics){
   events.sort((a,b)=>a.start - b.start);
   return events;
 }
+
 function esc(s){
   return (s || '')
     .replace(/\\/g,'\\\\')
@@ -295,6 +294,7 @@ function esc(s){
 function fmtDateLocal(dt){ return `${dt.getFullYear().toString().padStart(4,'0')}${(dt.getMonth()+1).toString().padStart(2,'0')}${dt.getDate().toString().padStart(2,'0')}`; }
 function fmtDTLocal(dt){ return `${dt.getFullYear().toString().padStart(4,'0')}${(dt.getMonth()+1).toString().padStart(2,'0')}${dt.getDate().toString().padStart(2,'0')}T${dt.getHours().toString().padStart(2,'0')}${dt.getMinutes().toString().padStart(2,'0')}${dt.getSeconds().toString().padStart(2,'0')}`; }
 function fmtStampUtc(){ const d=new Date(); return `${d.getUTCFullYear()}${String(d.getUTCMonth()+1).padStart(2,'0')}${String(d.getUTCDate()).padStart(2,'0')}T${String(d.getUTCHours()).padStart(2,'0')}${String(d.getUTCMinutes()).padStart(2,'0')}${String(d.getUTCSeconds()).padStart(2,'0')}Z`; }
+
 function serializeICS(evs){
   const head = [
     'BEGIN:VCALENDAR',
@@ -325,7 +325,7 @@ function serializeICS(evs){
   for (const e of evs.slice().sort((a,b)=>a.start-b.start)){
     out.push('BEGIN:VEVENT');
     out.push(`UID:${e.uid}`);
-    out.push(`DTSTAMP:${fmtStampUtc()}`);
+    out.push(`DTSTAMP:${e.stamp || fmtStampUtc()}`);
     if (e.allDay){
       const endExcl = new Date(e.end.getFullYear(), e.end.getMonth(), e.end.getDate());
       endExcl.setDate(endExcl.getDate() + 1);
@@ -391,7 +391,6 @@ function renderList(){
     </div>
   `).join('');
 
-  // Event-Handler für Edit-Buttons binden
   document.querySelectorAll('.editBtn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const uid = btn.getAttribute('data-uid');
@@ -402,20 +401,8 @@ function renderList(){
 }
 
 // ===== Modal =====
-// Helper (falls noch nicht vorhanden – NICHT doppelt einfügen)
-function asLocalDateOnly(d){
-  if (!d || !(d instanceof Date) || isNaN(d.getTime())) return null;
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
-}
-
 function openModal(idx){
   editIndexGlobal = idx;
-
-  // Debug: Rohdaten aus events
-  console.log('DBG idx:', idx);
-  console.log('DBG events[idx]?.start RAW:', events[idx]?.start, events[idx]?.start?.toString?.(), events[idx]?.start?.toISOString?.());
-  console.log('DBG events[idx]?.end   RAW:', events[idx]?.end, events[idx]?.end?.toString?.(), events[idx]?.end?.toISOString?.());
-
   const ev = idx >= 0 ? events[idx] : {
     uid: crypto.randomUUID() + '@example.com',
     title: '',
@@ -426,61 +413,24 @@ function openModal(idx){
     allDay: false
   };
 
-  // Debug: Event-Objekt, das wir ins UI laden
-  console.log('DBG ev.start:', ev.start, ev.start?.toString?.(), ev.start?.toISOString?.());
-  console.log('DBG ev.end  :', ev.end,   ev.end?.toString?.(),   ev.end?.toISOString?.());
-  console.log('DBG ev.allDay:', ev.allDay);
-
-  // -- Setze Formularfelder --
   UI.fTitle.value = ev.title || '';
   UI.fLocation.value = ev.location || '';
   UI.fDescription.value = ev.description || '';
   UI.fAllDay.value = ev.allDay ? 'true' : 'false';
 
-  // Lokale Mitternacht für Date-Inputs
-  const startLocalDate = asLocalDateOnly(ev.start) || null;
-  let endLocalDate = asLocalDateOnly(ev.end) || null;
+  const startLocalDate = asLocalDateOnly(ev.start);
+  let endLocalDate = asLocalDateOnly(ev.end);
 
-  console.log('DBG startLocalDate (before allDay adjust):', startLocalDate?.toString?.(), startLocalDate?.toISOString?.());
-  console.log('DBG endLocalDate   (before allDay adjust):', endLocalDate?.toString?.(),   endLocalDate?.toISOString?.());
-
-  // AllDay: exklusive DTEND im UI als inklusiv darstellen
-  if (ev.allDay && startLocalDate && endLocalDate) {
-    const oneDay = 24 * 3600 * 1000;
-    if ((ev.end.getTime() - ev.start.getTime()) === oneDay) {
+  if (ev.allDay && startLocalDate && endLocalDate){
+    const oneDay = 24*3600*1000;
+    if ((ev.end.getTime() - ev.start.getTime()) === oneDay){
       endLocalDate = asLocalDateOnly(ev.start);
-      console.log('DBG allDay adjust: endLocalDate := startLocalDate');
     }
   }
 
-  // Date-Inputs setzen – Variante A: valueAsDate (Standardweg)
-// Robuste Variante: explizit YYYY-MM-DD setzen
-function toYYYYMMDD(d){
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,'0');
-  const da = String(d.getDate()).padStart(2,'0');
-  return `${y}-${m}-${da}`;
-}
-UI.fStartDate.value = startLocalDate ? toYYYYMMDD(startLocalDate) : '';
-UI.fEndDate.value   = endLocalDate ? toYYYYMMDD(endLocalDate) : '';
-
-console.log('DBG input values after explicit YYYY-MM-DD:', 'start=', UI.fStartDate.value, 'end=', UI.fEndDate.value);
-
-
-  // Falls du zusätzlich die string-basierte, super-robuste Variante testen willst, ent-kommentiere:
-  /*
-  function toYYYYMMDD(d){
-    const y = d.getFullYear();
-    const m = String(d.getMonth()+1).padStart(2,'0');
-    const da = String(d.getDate()).padStart(2,'0');
-    return `${y}-${m}-${da}`;
-  }
   UI.fStartDate.value = startLocalDate ? toYYYYMMDD(startLocalDate) : '';
   UI.fEndDate.value   = endLocalDate ? toYYYYMMDD(endLocalDate) : '';
-  console.log('DBG input values after explicit YYYY-MM-DD:', 'start=', UI.fStartDate.value, 'end=', UI.fEndDate.value);
-  */
 
-  // Zeiten in die Time-Inputs
   try {
     const sh = (typeof ev.start.getHours === 'function') ? String(ev.start.getHours()).padStart(2,'0') : '09';
     const sm = (typeof ev.start.getMinutes === 'function') ? String(ev.start.getMinutes()).padStart(2,'0') : '00';
@@ -488,24 +438,16 @@ console.log('DBG input values after explicit YYYY-MM-DD:', 'start=', UI.fStartDa
     const em = (typeof ev.end.getMinutes === 'function') ? String(ev.end.getMinutes()).padStart(2,'0') : '00';
     UI.fStartTime.value = `${sh}:${sm}`;
     UI.fEndTime.value   = `${eh}:${em}`;
-  } catch (e) {
+  } catch {
     UI.fStartTime.value = '09:00';
     UI.fEndTime.value = '10:00';
   }
 
-  // UID anzeigen
   UI.fUid.textContent = 'UID: ' + (ev.uid || '');
-
-  // Sichtbarkeit der Zeitfelder
   toggleTimeFields();
-
-  // Modal öffnen
   UI.modalBackdrop.style.display = 'flex';
   UI.modalBackdrop.setAttribute('aria-hidden','false');
-
-  console.log('DBG modal opened.');
 }
-
 
 function closeModal(){
   UI.modalBackdrop.style.display = 'none';
@@ -535,39 +477,33 @@ function deleteEvent(){
 
 function saveEventFromForm(){
   const allDay = UI.fAllDay.value === 'true';
- let sd = UI.fStartDate.valueAsDate;
-let ed = UI.fEndDate.valueAsDate;
 
-// Fallback, falls valueAsDate leer ist
-function parseYMD(s){
-  if (!s) return null;
-  const [yy, mm, dd] = s.split('-').map(Number);
-  if (!yy || !mm || !dd) return null;
-  return new Date(yy, mm - 1, dd, 0, 0, 0, 0);
-}
-if (!sd) sd = parseYMD(UI.fStartDate.value);
-if (!ed) ed = parseYMD(UI.fEndDate.value);
+  let sd = UI.fStartDate.valueAsDate;
+  let ed = UI.fEndDate.valueAsDate;
 
+  // Fallback, falls valueAsDate nicht gesetzt wurde (wir verwenden Strings)
+  function parseYMD(s){
+    if (!s) return null;
+    const [yy, mm, dd] = s.split('-').map(Number);
+    if (!yy || !mm || !dd) return null;
+    return new Date(yy, mm - 1, dd, 0, 0, 0, 0);
+  }
+  if (!sd) sd = parseYMD(UI.fStartDate.value);
+  if (!ed) ed = parseYMD(UI.fEndDate.value);
 
   if (!sd || !ed){ alert('Bitte Start- und Enddatum setzen.'); return; }
 
-  // Baue lokale Date-Objekte ausschließlich mit numerischem Konstruktor
   let start, end;
   if (allDay){
-    // UI liefert inklusive Enddatum — intern behalten wir es inklusiv hier.
-    // Beim Serialisieren in ICS wird DTEND als exklusives Datum (end + 1) geschrieben.
     start = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), 0, 0, 0, 0);
     end   = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), 0, 0, 0, 0);
   } else {
-    // Lese Zeiten aus time-Inputs und kombiniere mit valueAsDate (lokal)
     const [sh, sm] = (UI.fStartTime.value || '09:00').split(':').map(v => parseInt(v,10) || 0);
     const [eh, em] = (UI.fEndTime.value || '10:00').split(':').map(v => parseInt(v,10) || 0);
-
     start = new Date(sd.getFullYear(), sd.getMonth(), sd.getDate(), sh, sm, 0, 0);
     end   = new Date(ed.getFullYear(), ed.getMonth(), ed.getDate(), eh, em, 0, 0);
   }
 
-  // Validierung: Ende muss nach Start liegen
   if (end <= start){
     alert('Ende muss nach dem Start liegen.');
     return;
@@ -578,7 +514,8 @@ if (!ed) ed = parseYMD(UI.fEndDate.value);
     title: UI.fTitle.value.trim() || 'Termin',
     description: UI.fDescription.value.trim(),
     location: UI.fLocation.value.trim(),
-    start, end, allDay
+    start, end, allDay,
+    stamp: fmtStampUtc()
   };
 
   if (editIndexGlobal >= 0) events[editIndexGlobal] = obj;
@@ -610,20 +547,14 @@ async function doLoad(){
 async function doSave(){
   setStatus('Speichere direkt in main...');
   const owner = UI.owner.value.trim(); const repo = UI.repo.value.trim();
-  const path = UI.path.value.trim(); const base = UI.baseBranch.value.trim(); // bleibt 'main'
+  const path = UI.path.value.trim(); const base = UI.baseBranch.value.trim();
 
   if (!TOKEN){ alert('Bitte zuerst Token setzen.'); return; }
 
   try{
-    // 1) Neueste Datei und SHA aus main holen
     const latest = await getFile(owner, repo, path, base);
-
-    // 2) ICS serialisieren
     const newIcs = serializeICS(events);
-
-    // 3) Direkt in main committen
     await putFile(owner, repo, path, base, `Direct update via Web-Editor (${events.length} events)`, newIcs, latest.sha);
-
     setStatus('Gespeichert auf main.');
     alert(`Gespeichert direkt auf ${owner}/${repo}@${base}\nDatei: ${path}`);
   }catch(e){
