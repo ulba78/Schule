@@ -93,18 +93,41 @@ async function createBranch(owner, repo, branchName, fromSha){
   const url = `https://api.github.com/repos/${owner}/${repo}/git/refs`;
   return await ghPostJson(url, { ref: `refs/heads/${branchName}`, sha: fromSha });
 }
+// Sicheres getFile: Base64 -> UTF-8 korrekt decodieren
 async function getFile(owner, repo, path, branch){
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(branch)}`;
   const json = await ghGetJson(url);
   if (!json || !json.content || !json.sha) throw new Error('File not found or invalid content response');
-  const bytes = atob(json.content.replace(/\n/g,''));
-  return { text: bytes, sha: json.sha };
+
+  // Decode base64 to bytes, then decode UTF-8
+  const b64 = json.content.replace(/\n/g,'');
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  const decoder = new TextDecoder('utf-8');
+  const text = decoder.decode(bytes);
+
+  return { text, sha: json.sha };
 }
+
+// Sicheres putFile: UTF-8 -> Base64 korrekt encodieren
 async function putFile(owner, repo, path, branch, message, contentText, sha){
   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
-  const contentB64 = btoa(unescape(encodeURIComponent(contentText)));
+
+  // UTF-8 -> bytes
+  const encoder = new TextEncoder();
+  const bytes = encoder.encode(contentText);
+
+  // bytes -> binary string for btoa
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  const contentB64 = btoa(binary);
+
   return await ghPutJson(url, { message, content: contentB64, branch, sha });
 }
+
 async function ensureUniqueBranchName(owner, repo, desired, baseSha){
   let name = desired; let n = 2;
   while (true) {
