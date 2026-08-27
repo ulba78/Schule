@@ -1,1 +1,610 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Schulkalender Import//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+X-LIC-LOCATION:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:exakt-29-mo-ostermontag-13-29-do-29-sa-29-di-2-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:29 | Mo | Ostermontag | 13 | 29 | Do | 29 | Sa | 29 | Di | 29 | Do
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-30-di-30-fr-meld-versetz-gefahrd-meld-ve-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:30 | Di | 30 | Fr | Meld. Versetz gefährd. | Meld. Versetz gefährd. | 30 | So | 30 | Mi | 30 | Fr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:30 | Di | 30 | Fr | Meld. Versetz-gefährd. | Meld. Versetz-gefährd. | 30 | So | 30 | Mi | 30 | Fr
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-31-mi-31-mo-22-31-sa-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:31 | Mi | 31 | Mo | 22 | 31 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-august-2026-august-2026-august-2026-sept-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:August 2026 | August 2026 | August 2026 | September 2026 | September 2026 | September 2026 | September 2026 | Oktober 2026 | Oktober 2026 | Oktober 2026 | Oktober 2026 | November 2026 | November 2026 | November 2026 | November 2026 | Dezember 2026 | Dezember 2026 | Dezember 2026 | Dezember 2026 | Januar 2027 | Januar 2027 | Januar 2027 | Januar 2027
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-11-fr-11-so-11-mi-11-fr-11-mo-2-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 11 | Fr | 11 | So | 11 | Mi | 11 | Fr | 11 | Mo | 2
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-16-di-16-fr-zwischenzeugnisse-zwische-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 16 | Di | 16 | Fr | Zwischenzeugnisse | Zwischenzeugnisse | 16 | So | Pfingsten | Pfingsten | 16 | Mi | Abschluss 2.Halbjahr | Abschluss 2.Halbjahr | 16 | Fr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-18-fr-18-so-18-mi-hallensportfest-hal-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 18 | Fr | 18 | So | 18 | Mi | Hallensportfest | Hallensportfest | 18 | Fr | 18 | Mo | 3
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-2-di-2-fr-2-so-2-mi-2-fr-zeugnisse-ze-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 2 | Di | 2 | Fr | 2 | So | 2 | Mi | 2 | Fr | Zeugnisse | Zeugnisse
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-23-di-23-fr-23-so-23-mi-zeugniskonfer-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 23 | Di | 23 | Fr | 23 | So | 23 | Mi | Zeugniskonferenzen | Zeugniskonferenzen | 23 | Fr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-25-fr-25-so-ende-der-sommerzeit-ende--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 25 | Fr | 25 | So | Ende der Sommerzeit | Ende der Sommerzeit | 25 | Mi | 25 | Fr | 1. Weihnachtstag | 1. Weihnachtstag | 25 | Mo | Zeugniskonferenzen | 4
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-4-fr-abschl-schulerratswahl-abschl-sc-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 4 | Fr | Abschl. Schülerratswahl | Abschl. Schülerratswahl | 4 | So | 4 | Mi | 4 | Fr | 4 | Mo | 1
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-di-9-di-9-fr-9-so-muttertag-muttertag-9--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Di | 9 | Di | 9 | Fr | 9 | So | Muttertag | Muttertag | 9 | Mi | 9 | Fr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-11-do-11-so-11-di-11-fr-11-so-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | 11 | Do | 11 | So | 11 | Di | 11 | Fr | 11 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-13-so-13-di-antrage-auf-versetzung-an-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | 13 | So | 13 | Di | Anträge auf Versetzung | Anträge auf Versetzung | 13 | Fr | Antr. Förderbed. Std.redu. | Antr. Förderbed. Std.redu. | 13 | So | 13 | Mi
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-18-do-18-so-18-di-18-fr-18-so-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | 18 | Do | 18 | So | 18 | Di | 18 | Fr | 18 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-25-do-25-so-25-di-25-fr-abschluss-mdl-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | 25 | Do | 25 | So | 25 | Di | 25 | Fr | Abschluss mdl. Prüfungen | Abschluss mdl. Prüfungen | 25 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-27-so-cross-am-turm-cross-am-turm-27--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | 27 | So | Cross am Turm | Cross am Turm | 27 | Di | 27 | Fr | 27 | So | 27 | Mi | Holocaustged. Zeugnisko | Holocaustged. Zeugnisko
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-6-so-6-di-6-fr-6-so-6-mi-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | 6 | So | 6 | Di | 6 | Fr | 6 | So | 6 | Mi
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-eroffnungskonferenz-eroffnungskonfere-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | Eröffnungskonferenz | Eröffnungskonferenz | 20 | So | 20 | Di | 20 | Fr | Ende Prakt. Kl. 9 | Ende Prakt. Kl. 9 | 20 | So | 20 | Mi | Abschluss 1. Halbjahr | Abschluss 1. Halbjahr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-do-fasching-fasching-4-do-4-so-4-di-4-fr-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Do | Fasching | Fasching | 4 | Do | 4 | So | 4 | Di | 4 | Fr | 4 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-februar-2027-februar-2027-februar-2027-m-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Februar 2027 | Februar 2027 | Februar 2027 | März 2027 | März 2027 | März 2027 | März 2027 | April 2027 | April 2027 | April 2027 | April 2027 | Mai 2027 | Mai 2027 | Mai 2027 | Mai 2027 | Juni 2027 | Juni 2027 | Juni 2027 | Juni 2027 | Juli 2027 | Juli 2027 | Juli 2027 | Juli 2027
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-12-fr-12-mo-prufungseroffnungskon-15--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | 12 | Fr | 12 | Mo | Prüfungseröffnungskon | 15 | 12 | Mi | 12 | Sa | 12 | Mo | 28
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-14-mo-fachschaften-38-14-mi-gesundhei-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | 14 | Mo | Fachschaften | 38 | 14 | Mi | Gesundheitstag | Gesundheitstag | 14 | Sa | 14 | Mo | Fachschaften | 51 | 14 | Do
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-19-fr-ende-prakt-kl-8-ende-prakt-kl-8-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | 19 | Fr | Ende Prakt. Kl.8 | Ende Prakt. Kl.8 | 19 | Mo | Fachschaften | 16 | 19 | Mi | Schrft. Prüf. Deutsch | Schrft. Prüf. Deutsch | 19 | Sa | 19 | Mo | 29
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-21-mo-39-21-mi-21-sa-21-mo-52-21-do-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | 21 | Mo | 39 | 21 | Mi | 21 | Sa | 21 | Mo | 52 | 21 | Do
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-26-fr-karfreitag-karfreitag-26-mo-17--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | 26 | Fr | Karfreitag | Karfreitag | 26 | Mo | 17 | 26 | Mi | Sportfest RS | Sportfest RS | 26 | Sa | 26 | Mo | 30
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-28-mo-40-28-mi-28-sa-28-mo-53-28-do-z-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | 28 | Mo | 40 | 28 | Mi | 28 | Sa | 28 | Mo | 53 | 28 | Do | Zeugniskonferenzen | Zeugniskonferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-7-mo-dienstkonferenz-37-7-mi-schuler--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | 7 | Mo | Dienstkonferenz | 37 | 7 | Mi | Schüler Elternratswahl | Schüler Elternratswahl | 7 | Sa | 7 | Mo | Lehrerkonferenz | 50 | 7 | Do
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Fr | 7 | Mo | Dienstkonferenz | 37 | 7 | Mi | Schüler-Elternratswahl | Schüler-Elternratswahl | 7 | Sa | 7 | Mo | Lehrerkonferenz | 50 | 7 | Do
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-fr-zeugnisse-zeugnisse-5-fr-5-mo-14-5-mi-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Fr | Zeugnisse | Zeugnisse | 5 | Fr | 5 | Mo | 14 | 5 | Mi | 5 | Sa | 5 | Mo | 27
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-jahresarbeitsplan-2026-27-stand-jahresar-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand: | Jahresarbeitsplan 2026/27 Stand:
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026 | Jahresarbeitsplan 2026/27 Stand: 24.08.2026
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-10-mi-10-sa-10-mo-letzter-unterrichts-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 10 | Mi | 10 | Sa | 10 | Mo | Letzter Unterrichtstag | 19 | 10 | Do | Beginn mdl. Prüfungen | Beginn mdl. Prüfungen | 10 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-12-sa-12-mo-dienstkonferenz-fortb-42--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 12 | Sa | 12 | Mo | Dienstkonferenz/Fortb. | 42 | 12 | Do | 12 | Sa | 12 | Di
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-17-mi-17-sa-17-mo-pfingstmontag-20-17-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 17 | Mi | 17 | Sa | 17 | Mo | Pfingstmontag | 20 | 17 | Do | Zeugniskonferenzen 1 4 | Zeugniskonferenzen 1 4 | 17 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Mi | 17 | Mi | 17 | Sa | 17 | Mo | Pfingstmontag | 20 | 17 | Do | Zeugniskonferenzen 1-4 | Zeugniskonferenzen 1-4 | 17 | Sa
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-19-sa-19-mo-43-19-do-hallensportfest--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 19 | Sa | 19 | Mo | 43 | 19 | Do | Hallensportfest | Hallensportfest | 19 | Sa | 19 | Di
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-24-mi-24-sa-24-mo-beginn-d-konsultati-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 24 | Mi | 24 | Sa | 24 | Mo | Beginn d. Konsultation | 21 | 24 | Do | Zeugniskonferenzen | Zeugniskonferenzen | 24 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-26-sa-26-mo-fachschaftsleitersitz-44--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 26 | Sa | 26 | Mo | Fachschaftsleitersitz. | 44 | 26 | Do | 26 | Sa | 2. Weihnachtstag | 2. Weihnachtstag | 26 | Di | Zeugniskonferenzen | Zeugniskonferenzen
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-3-mi-3-sa-3-mo-fachschaften-18-3-do-3-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 3 | Mi | 3 | Sa | 3 | Mo | Fachschaften | 18 | 3 | Do | 3 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mi-5-sa-5-mo-fachschaften-41-5-do-5-sa-5-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mi | 5 | Sa | 5 | Mo | Fachschaften | 41 | 5 | Do | 5 | Sa | 5 | Di
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-32-3-do-elternvers-kl-1-4-elternvers--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | 32 | 3 | Do | Elternvers. Kl. 1 4 | Elternvers. Kl. 1 4 | 3 | Sa | Tag der Dt. Einheit | Tag der Dt. Einheit | 3 | Di | 3 | Do | 3 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Mo | 32 | 3 | Do | Elternvers. Kl. 1-4 | Elternvers. Kl. 1-4 | 3 | Sa | Tag der Dt. Einheit | Tag der Dt. Einheit | 3 | Di | 3 | Do | 3 | So
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-33-10-do-10-sa-10-di-1-schulkonferenz-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | 33 | 10 | Do | 10 | Sa | 10 | Di | 1. Schulkonferenz | 1. Schulkonferenz | 10 | Do | 10 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-34-17-do-17-sa-17-di-zwischenzeugniss-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | 34 | 17 | Do | 17 | Sa | 17 | Di | Zwischenzeugnisse | Zwischenzeugnisse | 17 | Do | 17 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-35-24-do-wandertag-wandertag-24-sa-24-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | 35 | 24 | Do | Wandertag | Wandertag | 24 | Sa | 24 | Di | 24 | Do | Heiligabend | Heiligabend | 24 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-36-31-sa-reformationstag-reformations-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | 36 | 31 | Sa | Reformationstag | Reformationstag | 31 | Do | Silvester | Silvester | 31 | So
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-5-1-mo-lehrerkonferenz-9-1-do-1-sa-ta-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | 5 | 1 | Mo | Lehrerkonferenz | 9 | 1 | Do | 1 | Sa | Tag der Arbeit | Tag der Arbeit | 1 | Di | Lehrerkonferenz | Lehrerkonferenz | 1 | Do | Schulfest | Schulfest
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-7-15-mo-beginn-prakt-kl-8-11-15-do-15-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | 7 | 15 | Mo | Beginn Prakt. Kl. 8 | 11 | 15 | Do | 15 | Sa | 15 | Di | 15 | Do
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-fachschaften-8-22-mo-fachschaftsleite-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | Fachschaften | 8 | 22 | Mo | Fachschaftsleitersitz. | 12 | 22 | Do | 22 | Sa | 22 | Di | Zeugniskonferenzen | Zeugniskonferenzen | 22 | Do
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-mo-rosenmontag-6-8-mo-internat-frauentag-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Mo | Rosenmontag | 6 | 8 | Mo | Internat. Frauentag | 10 | 8 | Do | 8 | Sa | 8 | Di | 2. Schulkonferenz | 2. Schulkonferenz | 8 | Do
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-1-di-1-do-1-so-allerheiligen-allerhei-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 1 | Di | 1 | Do | 1 | So | Allerheiligen | Allerheiligen | 1 | Di | Beginn Elterngespräche | Beginn Elterngespräche | 1 | Fr | Neujahr | Neujahr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-13-sa-13-di-13-do-schrft-pruf-englisc-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 13 | Sa | 13 | Di | 13 | Do | Schrft. Prüf. Englisch | Schrft. Prüf. Englisch | 13 | So | 13 | Di
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-15-di-15-do-15-so-15-di-antrag-auf-wi-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 15 | Di | 15 | Do | 15 | So | 15 | Di | Antrag auf Wiederholung/ Weihnachtsmärchen 5. U 6. ‚Kl | Antrag auf Wiederholung/ Weihnachtsmärchen 5. U 6. ‚Kl | 15 | Fr | Ende Elterngespräche | Ende Elterngespräche
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-20-sa-20-di-20-do-sportfest-gs-sportf-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 20 | Sa | 20 | Di | 20 | Do | Sportfest GS | Sportfest GS | 20 | So | 20 | Di
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-22-di-22-do-22-so-22-di-22-fr-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 22 | Di | 22 | Do | 22 | So | 22 | Di | 22 | Fr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-27-sa-27-di-27-do-27-so-27-di-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 27 | Sa | 27 | Di | 27 | Do | 27 | So | 27 | Di
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-29-di-29-do-29-so-1-advent-1-advent-2-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 29 | Di | 29 | Do | 29 | So | 1. Advent | 1. Advent | 29 | Di | 29 | Fr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-6-sa-6-di-6-do-christi-himmelfahrt-ch-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 6 | Sa | 6 | Di | 6 | Do | Christi Himmelfahrt | Christi Himmelfahrt | 6 | So | 6 | Di
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-sa-8-di-elternvers-kl-9-5-8-elternvers-k-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:Sa | 8 | Di | Elternvers. Kl. 9/ 5 8 | Elternvers. Kl. 9/ 5 8 | 8 | Do | 8 | So | 8 | Di | 8 | Fr
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:Sa | 8 | Di | Elternvers. Kl. 9/ 5-8 | Elternvers. Kl. 9/ 5-8 | 8 | Do | 8 | So | 8 | Di | 8 | Fr
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-14-so-14-mi-14-fr-14-mo-24-14-mi-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 14 | So | 14 | Mi | 14 | Fr | 14 | Mo | 24 | 14 | Mi
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-16-mi-16-fr-16-mo-fachschaften-auszei-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 16 | Mi | 16 | Fr | 16 | Mo | Fachschaften/ Auszeichnungbeste SuS | 47 | 16 | Mi | 16 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-2-mi-elternvers-kl-1-4-elternvers-kl--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 2 | Mi | Elternvers. Kl. 1 4 | Elternvers. Kl. 1 4 | 2 | Fr | 2 | Mo | Lehrerkonferenz | 45 | 2 | Mi | Offener Elternabend | Offener Elternabend | 2 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:So | 2 | Mi | Elternvers. Kl. 1-4 | Elternvers. Kl. 1-4 | 2 | Fr | 2 | Mo | Lehrerkonferenz | 45 | 2 | Mi | Offener Elternabend | Offener Elternabend | 2 | Sa
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-21-so-21-mi-21-fr-schrft-pruf-mathema-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 21 | So | 21 | Mi | 21 | Fr | Schrft. Prüf. Mathematik | Schrft. Prüf. Mathematik | 21 | Mo | Prüf.komm. Zeugnisko | 25 | 21 | Mi
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-28-so-ostern-ostern-28-mi-28-fr-28-mo-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 28 | So | Ostern | Ostern | 28 | Mi | 28 | Fr | 28 | Mo | 26 | 28 | Mi
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-30-mi-antr-projektt-fordb-5-6-antr-pr-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 30 | Mi | Antr. Projektt./Fördb. 5/6 | Antr. Projektt./Fördb. 5/6 | 30 | Fr | 30 | Mo | Meld. Versetz gefährd. | 49 | 30 | Mi | 30 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:So | 30 | Mi | Antr. Projektt./Fördb. 5/6 | Antr. Projektt./Fördb. 5/6 | 30 | Fr | 30 | Mo | Meld. Versetz-gefährd. | 49 | 30 | Mi | 30 | Sa
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-7-so-7-mi-7-fr-7-mo-fachschaften-23-7-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 7 | So | 7 | Mi | 7 | Fr | 7 | Mo | Fachschaften | 23 | 7 | Mi
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-9-mi-elternvers-kl-10-5-8-elternvers--1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | 9 | Mi | Elternvers. Kl. 10/ 5 8 | Elternvers. Kl. 10/ 5 8 | 9 | Fr | 9 | Mo | Beginn Prakt. Kl. 9 | 46 | 9 | Mi | 9 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:So | 9 | Mi | Elternvers. Kl. 10/ 5-8 | Elternvers. Kl. 10/ 5-8 | 9 | Fr | 9 | Mo | Beginn Prakt. Kl. 9 | 46 | 9 | Mi | 9 | Sa
+END:VEVENT
+BEGIN:VEVENT
+UID:exakt-so-einschulung-einschulung-23-mi-23-fr-2-1@example.com
+DTSTAMP:20260412T070553Z
+DTSTART;VALUE=DATE:20260824
+DTEND;VALUE=DATE:20260825
+SUMMARY;CHARSET=UTF-8:So | Einschulung | Einschulung | 23 | Mi | 23 | Fr | 23 | Mo | Beginn Prakt. Kl. 10 | 48 | 23 | Mi | 23 | Sa
+LOCATION;CHARSET=UTF-8:Schule
+DESCRIPTION;CHARSET=UTF-8:
+END:VEVENT
+END:VCALENDAR
 
